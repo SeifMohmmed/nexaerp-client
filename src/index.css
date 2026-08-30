@@ -1,9 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
 @import "tailwindcss";
 
 html {
   scroll-behavior: smooth;
 }
 
+:root {
+  font-family: "Cairo", sans-serif;
+}
+
+html,
+body {
+  font-family: "Cairo", sans-serif;
+}
+
+* {
+  font-family: "Cairo", sans-serif;
+}
 body {
   margin: 0;
   min-width: 320px;
