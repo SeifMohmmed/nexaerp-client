@@ -40,8 +40,8 @@ export function Navbar() {
                     duration-500
                     ${
                       isScrolled
-                        ? "bg-primary/95 py-3 shadow-lg backdrop-blur-lg"
-                        : "bg-primary py-5"
+                        ? "bg-[#021e3a]/95 py-3 text-white shadow-md backdrop-blur-lg"
+                        : "bg-[#301E44] py-5 text-white"
                     }
                 `}
       >
@@ -129,6 +129,7 @@ export function Navbar() {
                                 transition-all
                                 duration-300
                                 hover:bg-primary
+                                hover:text-white
                                 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]
                             "
             >
