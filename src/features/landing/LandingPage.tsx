@@ -1,5 +1,6 @@
 import Advantages from "./Advantages/Advantages";
 import BusinessStats from "./BusinessStats/BusinessStats";
+import Footer from "./Footer/Footer";
 import Hero from "./Hero/Hero";
 import HowItWorks from "./HowItWorks/HowItWorks";
 import Integrations from "./Integrations/Integrations";
@@ -20,6 +21,7 @@ export function LandingPage() {
       <HowItWorks />
       <Pricing />
       <BusinessStats />
+      <Footer />
     </>
   );
 }
