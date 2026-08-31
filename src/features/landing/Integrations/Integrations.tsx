@@ -9,6 +9,8 @@ import {
   SiZapier,
 } from "react-icons/si";
 
+import "./Integrations.css";
+
 const integrations = [
   {
     name: "Stripe",
@@ -264,44 +266,6 @@ const Integrations = () => {
           </p>
         </div>
       </div>
-
-      {/* Integration Slider Animation */}
-      <style>{`
-        .integration-slider {
-          width: 100%;
-          overflow: hidden;
-        }
-
-        .integration-track {
-          display: flex;
-          width: max-content;
-          gap: 20px;
-          animation: integrations-scroll 25s linear infinite;
-        }
-
-        @keyframes integrations-scroll {
-          from {
-            transform: translateX(0);
-          }
-
-          to {
-            transform: translateX(calc(-50% - 10px));
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .integration-track {
-            animation: none;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .integration-track {
-            gap: 14px;
-            animation-duration: 20s;
-          }
-        }
-      `}</style>
     </section>
   );
 };
