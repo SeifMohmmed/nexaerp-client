@@ -1,5 +1,7 @@
 import Advantages from "./Advantages/Advantages";
 import Hero from "./Hero/Hero";
+import HowItWorks from "./HowItWorks/HowItWorks";
+import Integrations from "./Integrations/Integrations";
 import Navbar from "./Navbar/Navbar";
 import PlatformFeatures from "./PlatformFeatures/PlatformFeatures";
 import WhyNexaERP from "./WhyNexaERP/WhyNexaERP";
@@ -12,6 +14,8 @@ export function LandingPage() {
       <PlatformFeatures />
       <WhyNexaERP />
       <Advantages />
+      <HowItWorks />
+      <Integrations />
       <main>
         <section className="min-h-screen">
           <h1>Welcome to NexaERP</h1>

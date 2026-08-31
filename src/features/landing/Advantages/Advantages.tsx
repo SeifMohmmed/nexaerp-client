@@ -1,10 +1,10 @@
 import {
   ShieldCheck,
   Rocket,
-  Gauge,
-  Headphones,
-  Settings,
-  Plug,
+  Zap,
+  Headset,
+  Wrench,
+  PlugZap,
 } from "lucide-react";
 
 const advantages = [
@@ -24,25 +24,25 @@ const advantages = [
     title: "Higher Efficiency",
     description:
       "Streamline operations and boost productivity through a unified platform that reduces operational costs.",
-    icon: Gauge,
+    icon: Zap,
   },
   {
     title: "Customer Service",
     description:
       "Get reliable support and continuous assistance to keep your business running efficiently.",
-    icon: Headphones,
+    icon: Headset,
   },
   {
     title: "Maintenance",
     description:
       "Benefit from regular monitoring and continuous updates to keep your platform running efficiently.",
-    icon: Settings,
+    icon: Wrench,
   },
   {
     title: "Seamless Integrations",
     description:
       "Connect your favorite tools and systems to simplify management and enhance performance.",
-    icon: Plug,
+    icon: PlugZap,
   },
 ];
 
@@ -109,18 +109,27 @@ const Advantages = () => {
                     size-14
                     items-center
                     justify-center
-                    rounded-xl
+                    rounded-2xl
                     bg-linear-to-br
                     from-[#354FC4]
                     to-[#A83DFF]
                     text-white
                     shadow-md
-                    transition-transform
+                    transition-all
                     duration-300
                     group-hover:scale-105
+                    group-hover:shadow-lg
                   "
                 >
-                  <Icon size={28} strokeWidth={1.8} />
+                  <Icon
+                    size={30}
+                    strokeWidth={1.8}
+                    className="
+                      transition-transform
+                      duration-300
+                      group-hover:scale-110
+                    "
+                  />
                 </div>
 
                 {/* Title */}
