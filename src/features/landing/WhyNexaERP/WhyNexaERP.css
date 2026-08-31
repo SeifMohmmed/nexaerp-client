@@ -1,0 +1,58 @@
+.why-nexaerp {
+  position: relative;
+}
+
+/* Initial dark layer + reveal animation */
+.home-image-revealer {
+  position: absolute;
+  inset: 0;
+  z-index: -5;
+
+  background: #000;
+  opacity: 0.45;
+
+  transition: opacity 0.3s ease-in;
+}
+
+.home-image-revealed {
+  animation: slideGradient 1.4s ease-out forwards;
+}
+
+/* NexaERP dark brand overlay */
+.why-nexaerp-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(48, 30, 68, 0.35) 0%,
+    rgba(48, 30, 68, 0.25) 35%,
+    rgba(2, 30, 58, 0.55) 70%,
+    rgba(2, 30, 58, 0.75) 100%
+  );
+}
+
+/* Image reveal animation */
+@keyframes slideGradient {
+  0% {
+    transform: translateX(0);
+    opacity: 0.45;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .why-nexaerp {
+    min-height: 750px;
+  }
+
+  .why-nexaerp-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(48, 30, 68, 0.35) 0%,
+      rgba(2, 30, 58, 0.65) 100%
+    );
+  }
+}

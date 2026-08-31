@@ -1,5 +1,7 @@
 import Hero from "./Hero/Hero";
 import Navbar from "./Navbar/Navbar";
+import PlatformFeatures from "./PlatformFeatures/PlatformFeatures";
+import WhyNexaERP from "./WhyNexaERP/WhyNexaERP";
 
 type Props = {};
 
@@ -8,6 +10,8 @@ export function LandingPage() {
     <>
       <Navbar />
       <Hero />
+      <PlatformFeatures />
+      <WhyNexaERP />
       <main>
         <section className="min-h-screen">
           <h1>Welcome to NexaERP</h1>
