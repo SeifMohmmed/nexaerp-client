@@ -41,7 +41,7 @@ export function Navbar() {
                     ${
                       isScrolled
                         ? "bg-[#021e3a]/95 py-3 text-white shadow-md backdrop-blur-lg"
-                        : "bg-[#301E44] py-5 text-white"
+                        : "bg-primary py-5 text-white"
                     }
                 `}
       >

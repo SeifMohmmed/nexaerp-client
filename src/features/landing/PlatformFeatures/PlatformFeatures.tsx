@@ -123,7 +123,7 @@ export function PlatformFeatures() {
                 className="
                                     group
                                     flex
-                                    min-h-[108px]
+                                    min-h-27
                                     flex-col
                                     items-center
                                     justify-center
