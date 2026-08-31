@@ -1,221 +1,266 @@
-import {
-  FaHandHoldingHeart,
-  FaUsers,
-  FaClipboardCheck,
-  FaRocket,
-} from "react-icons/fa6";
+import { ArrowRight, Settings2, UserPlus, BarChart3 } from "lucide-react";
 
-import image from "../../../assets/business-stats.png";
-
-import { useRef } from "react";
-
-const stats = [
+const steps = [
   {
-    value: "Full Support",
-    title: (
-      <>
-        for
-        <br />
-        the Saudi Market
-      </>
-    ),
-    icon: FaHandHoldingHeart,
+    number: "01",
+    title: "Create Your Account",
+    description:
+      "Create your NexaERP account and get your business workspace ready in just a few simple steps.",
+    icon: UserPlus,
   },
   {
-    value: "550+",
-    title: "Active Clients",
-    icon: FaUsers,
+    number: "02",
+    title: "Configure Your Business",
+    description:
+      "Set up your business information and configure the ERP modules that match your business needs.",
+    icon: Settings2,
   },
   {
-    value: "15+",
-    title: (
-      <>
-        Integrated Business
-        <br />
-        Units
-      </>
-    ),
-    icon: FaClipboardCheck,
-  },
-  {
-    value: "100%",
-    title: (
-      <>
-        Cloud-Based
-        <br />
-        System
-      </>
-    ),
-    icon: FaRocket,
+    number: "03",
+    title: "Manage & Grow",
+    description:
+      "Manage your daily operations from one platform and use real-time insights to grow your business.",
+    icon: BarChart3,
   },
 ];
 
-const BusinessStats = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
+const HowItWorks = () => {
   return (
     <section
-      ref={sectionRef}
-      id="business-stats"
+      id="how-it-works"
       className="
-        relative
-        isolate
-        min-h-162.5
-        overflow-hidden
+        bg-[#F8FAFC]
+        px-5
+        pt-8
+        pb-12
+        sm:px-6
+        sm:pt-10
+        sm:pb-14
+        lg:px-12
+        lg:pt-12
+        lg:pb-16
       "
     >
-      {/* Background Image */}
-      <img
-        src={image}
-        alt="NexaERP business management"
-        className="
-          absolute
-          inset-0
-          -z-20
-          h-full
-          w-full
-          object-cover
-          object-center
-        "
-      />
+      <div className="mx-auto w-full max-w-7xl">
+        {/* Section Header */}
+        <div className="mx-auto max-w-2xl text-center">
+          <span
+            className="
+              mb-2
+              inline-block
+              text-xs
+              font-semibold
+              uppercase
+              tracking-[0.2em]
+              text-[#354FC4]
+              sm:text-sm
+            "
+          >
+            How It Works
+          </span>
 
-      {/* Image Revealer */}
-      <div className="home-image-revealer" />
-
-      {/* Brand Gradient */}
-      <div className="why-nexaerp-overlay absolute inset-0 -z-10" />
-
-      {/* Content */}
-      <div
-        className="
-          relative
-          z-10
-          mx-auto
-          flex
-          min-h-162.5
-          w-full
-          max-w-7xl
-          items-center
-          px-5
-          py-10
-          sm:px-6
-          sm:py-12
-          lg:px-8
-          lg:py-14
-        "
-      >
-        <div
-          className="
-            ml-auto
-            w-full
-            text-white
-            sm:w-[70%]
-            lg:w-[62%]
-            xl:w-[64%]
-          "
-        >
-          {/* Heading */}
           <h2
             className="
-              w-full
-              text-xl
+              text-3xl
               font-bold
-              leading-[1.35]
-              sm:text-2xl
-              md:text-3xl
-              lg:text-[34px]
-              xl:text-[38px]
+              leading-tight
+              text-primary
+              sm:text-4xl
+              lg:text-5xl
             "
           >
-            <span className="block">
-              Trusted by businesses to simplify operations and manage their
-              business with NexaERP.
-            </span>
+            Get Started With NexaERP
           </h2>
 
-          {/* Stats */}
-          <div
+          <p
             className="
-              mt-7
-              grid
-              grid-cols-2
-              gap-x-5
-              gap-y-6
-              sm:mt-9
-              sm:gap-x-7
-              sm:gap-y-7
-              lg:grid-cols-4
-              lg:gap-x-5
-              lg:gap-y-0
-              xl:gap-x-7
+              mx-auto
+              mt-3
+              max-w-xl
+              text-sm
+              leading-6
+              text-slate-500
+              sm:mt-4
+              sm:text-base
+              sm:leading-7
             "
           >
-            {stats.map((stat) => {
-              const Icon = stat.icon;
+            Start managing your business with a simple and streamlined setup
+            process.
+          </p>
+        </div>
+
+        {/* Steps */}
+        <div className="relative mt-8 sm:mt-10">
+          {/* Connecting Line */}
+          <div
+            className="
+              absolute
+              left-[16.66%]
+              right-[16.66%]
+              top-9
+              hidden
+              h-px
+              bg-linear-to-r
+              from-[#354FC4]/20
+              via-[#A83DFF]/50
+              to-[#354FC4]/20
+              lg:block
+            "
+          />
+
+          <div
+            className="
+              grid
+              grid-cols-1
+              gap-7
+              sm:gap-8
+              lg:grid-cols-3
+              lg:gap-8
+            "
+          >
+            {steps.map((step, index) => {
+              const Icon = step.icon;
 
               return (
                 <div
-                  key={stat.value}
+                  key={step.number}
                   className="
                     group
-                    flex
-                    flex-col
-                    items-center
+                    relative
                     text-center
                   "
                 >
-                  {/* Icon */}
-                  <div
-                    className="
-                      flex
-                      h-12
-                      items-center
-                      justify-center
-                      text-white
-                      transition-transform
-                      duration-300
-                      group-hover:-translate-y-1
-                    "
-                  >
-                    <Icon className="text-[38px] sm:text-[42px]" />
+                  {/* Step Icon */}
+                  <div className="relative z-10 mx-auto mb-4">
+                    <div
+                      className="
+                        mx-auto
+                        flex
+                        size-18
+                        items-center
+                        justify-center
+                        rounded-full
+                        border
+                        border-slate-100
+                        bg-white
+                        shadow-md
+                        transition-shadow
+                        duration-300
+                        group-hover:shadow-lg
+                      "
+                    >
+                      <div
+                        className="
+                          flex
+                          size-11
+                          items-center
+                          justify-center
+                          rounded-full
+                          bg-linear-to-br
+                          from-[#354FC4]
+                          to-[#A83DFF]
+                          text-white
+                        "
+                      >
+                        <Icon size={21} strokeWidth={1.8} />
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Value */}
-                  <div
+                  {/* Step Number */}
+                  <span
                     className="
-                      mt-1.5
-                      text-xl
+                      text-[11px]
                       font-bold
-                      leading-tight
-                      text-white
-                      sm:text-2xl
+                      tracking-[0.2em]
+                      text-[#354FC4]
                     "
                   >
-                    {stat.value}
-                  </div>
+                    STEP {step.number}
+                  </span>
 
                   {/* Title */}
-                  <div
+                  <h3
                     className="
-                      mt-1
-                      max-w-40
-                      text-xs
-                      leading-5
-                      text-white/90
-                      sm:text-sm
-                      sm:leading-6
+                      mt-2
+                      text-lg
+                      font-semibold
+                      text-primary
+                      sm:text-xl
                     "
                   >
-                    {stat.title}
-                  </div>
+                    {step.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p
+                    className="
+                      mx-auto
+                      mt-2
+                      max-w-sm
+                      text-sm
+                      leading-6
+                      text-slate-500
+                      sm:leading-7
+                    "
+                  >
+                    {step.description}
+                  </p>
+
+                  {/* Arrow */}
+                  {index < steps.length - 1 && (
+                    <div className="mt-4 flex justify-center lg:hidden">
+                      <ArrowRight
+                        size={18}
+                        className="rotate-90 text-[#354FC4]/50"
+                      />
+                    </div>
+                  )}
                 </div>
               );
             })}
           </div>
+        </div>
+
+        {/* CTA */}
+        <div className="mt-8 flex justify-center sm:mt-10">
+          <a
+            href="/register"
+            className="
+              group
+              inline-flex
+              items-center
+              gap-2.5
+              rounded-full
+              bg-primary
+              px-6
+              py-3
+              text-sm
+              font-semibold
+              text-white
+              shadow-md
+              transition-all
+              duration-300
+              hover:-translate-y-0.5
+              hover:bg-primary-hover
+              hover:shadow-lg
+            "
+          >
+            Start Now
+            <ArrowRight
+              size={17}
+              className="
+                transition-transform
+                duration-300
+                group-hover:translate-x-1
+              "
+            />
+          </a>
         </div>
       </div>
     </section>
   );
 };
 
-export default BusinessStats;
+export default HowItWorks;
