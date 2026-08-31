@@ -1,10 +1,12 @@
 import Advantages from "./Advantages/Advantages";
 import BusinessStats from "./BusinessStats/BusinessStats";
+import Footer from "./Footer/Footer";
 import Hero from "./Hero/Hero";
 import HowItWorks from "./HowItWorks/HowItWorks";
 import Integrations from "./Integrations/Integrations";
 import Navbar from "./Navbar/Navbar";
 import PlatformFeatures from "./PlatformFeatures/PlatformFeatures";
+import Pricing from "./Pricing/Pricing";
 import WhyNexaERP from "./WhyNexaERP/WhyNexaERP";
 
 export function LandingPage() {
@@ -17,12 +19,9 @@ export function LandingPage() {
       <WhyNexaERP />
       <Advantages />
       <HowItWorks />
+      <Pricing />
       <BusinessStats />
-      <main>
-        <section className="min-h-screen">
-          <h1>Welcome to NexaERP</h1>
-        </section>
-      </main>
+      <Footer />
     </>
   );
 }
