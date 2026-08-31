@@ -96,24 +96,75 @@ const features = [
 
 export function PlatformFeatures() {
   return (
-    <section id="solutions" className="bg-white px-6 py-20 sm:px-8 lg:px-12">
-      <div className="mx-auto max-w-[1620px]">
+    <section
+      id="solutions"
+      className="
+        bg-white
+        px-5
+        pb-12
+        pt-4
+        sm:px-6
+        sm:pb-14
+        sm:pt-6
+        lg:px-12
+        lg:pb-16
+        lg:pt-8
+      "
+    >
+      <div className="mx-auto w-full max-w-[1620px]">
         {/* Header */}
-        <div className="mx-auto mb-12 max-w-2xl text-center">
-          <h2 className="text-3xl font-bold leading-tight text-primary sm:text-4xl">
+        <div
+          className="
+            mx-auto
+            mb-8
+            max-w-2xl
+            text-center
+            sm:mb-10
+          "
+        >
+          <h2
+            className="
+              text-3xl
+              font-bold
+              leading-tight
+              text-primary
+              sm:text-4xl
+              lg:text-5xl
+            "
+          >
             Powerful Business Management
             <br />
             <span className="text-primary/80">All in One ERP Platform</span>
           </h2>
 
-          <p className="mt-4 text-sm leading-6 text-slate-500 sm:text-base">
+          <p
+            className="
+              mt-3
+              text-sm
+              leading-6
+              text-slate-500
+              sm:mt-4
+              sm:text-base
+              sm:leading-7
+            "
+          >
             Manage your business operations with powerful, integrated tools
             designed to work together.
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        <div
+          className="
+            grid
+            grid-cols-1
+            gap-4
+            sm:grid-cols-2
+            lg:grid-cols-3
+            xl:grid-cols-6
+            xl:gap-5
+          "
+        >
           {features.map((feature) => {
             const Icon = feature.icon;
 
@@ -121,48 +172,52 @@ export function PlatformFeatures() {
               <div
                 key={feature.name}
                 className="
-                                    group
-                                    flex
-                                    min-h-27
-                                    flex-col
-                                    items-center
-                                    justify-center
-                                    rounded-[22px]
-                                    border
-                                    border-primary/15
-                                    bg-white
-                                    px-4
-                                    py-4
-                                    text-center
-                                    transition-all
-                                    duration-300
-                                    hover:-translate-y-1
-                                    hover:border-primary/30
-                                    hover:shadow-[0_10px_30px_rgba(48,30,68,0.08)]
-                                "
+                  group
+                  flex
+                  min-h-24
+                  min-w-0
+                  flex-col
+                  items-center
+                  justify-center
+                  rounded-[22px]
+                  border
+                  border-primary/15
+                  bg-white
+                  px-4
+                  py-4
+                  text-center
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:border-primary/30
+                  hover:shadow-[0_10px_30px_rgba(48,30,68,0.08)]
+                "
               >
                 {/* Icon */}
-                <div className="mb-3">
+                <div
+                  className="
+                    mb-2.5
+                    flex
+                    size-10
+                    items-center
+                    justify-center
+                  "
+                >
                   <Icon
-                    size={42}
+                    size={36}
                     strokeWidth={1.8}
-                    className="
-                                            text-[#354FC4]
-                                            transition-all
-                                            duration-300
-                                            group-hover:scale-110
-                                        "
+                    className="text-[#354FC4]"
                   />
                 </div>
 
                 {/* Name */}
                 <h3
                   className="
-                                        text-sm
-                                        font-medium
-                                        leading-5
-                                        text-slate-800
-                                    "
+                    text-sm
+                    font-medium
+                    leading-5
+                    text-slate-800
+                  "
                 >
                   {feature.name}
                 </h3>

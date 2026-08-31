@@ -1,64 +1,85 @@
-import {
-  ShieldCheck,
-  Rocket,
-  Zap,
-  Headset,
-  Wrench,
-  PlugZap,
-} from "lucide-react";
+import dataProtectionIcon from "../../../assets/icons/data-protection.png";
+import scalabilityIcon from "../../../assets/icons/scalability.png";
+import efficiencyIcon from "../../../assets/icons/efficiency.png";
+import customerServiceIcon from "../../../assets/icons/customer-service.png";
+import maintenanceIcon from "../../../assets/icons/maintenance.png";
+import integrationsIcon from "../../../assets/icons/integrations.png";
 
 const advantages = [
   {
     title: "Data Protection",
     description:
       "Protect your business data with strong security and privacy standards.",
-    icon: ShieldCheck,
+    icon: dataProtectionIcon,
   },
   {
     title: "Scalability",
     description:
       "Grow your business effortlessly with a system that adapts to your evolving needs.",
-    icon: Rocket,
+    icon: scalabilityIcon,
   },
   {
     title: "Higher Efficiency",
     description:
       "Streamline operations and boost productivity through a unified platform that reduces operational costs.",
-    icon: Zap,
+    icon: efficiencyIcon,
   },
   {
     title: "Customer Service",
     description:
       "Get reliable support and continuous assistance to keep your business running efficiently.",
-    icon: Headset,
+    icon: customerServiceIcon,
   },
   {
     title: "Maintenance",
     description:
       "Benefit from regular monitoring and continuous updates to keep your platform running efficiently.",
-    icon: Wrench,
+    icon: maintenanceIcon,
   },
   {
     title: "Seamless Integrations",
     description:
       "Connect your favorite tools and systems to simplify management and enhance performance.",
-    icon: PlugZap,
+    icon: integrationsIcon,
   },
 ];
 
 const Advantages = () => {
   return (
-    <section id="advantages" className="bg-white px-6 py-20 sm:px-8 lg:px-12">
-      <div className="mx-auto max-w-7xl">
+    <section
+      id="advantages"
+      className="
+        bg-white
+        px-5
+        pb-12
+        pt-6
+        sm:px-6
+        sm:pb-14
+        sm:pt-8
+        lg:px-12
+        lg:pb-16
+        lg:pt-10
+      "
+    >
+      <div className="mx-auto w-full max-w-7xl">
         {/* Section Header */}
-        <div className="mx-auto mb-14 max-w-2xl text-center">
+        <div
+          className="
+            mx-auto
+            mb-8
+            max-w-2xl
+            text-center
+            sm:mb-10
+          "
+        >
           <h2
             className="
-              text-4xl
+              text-3xl
               font-bold
               leading-tight
               text-primary
-              sm:text-5xl
+              sm:text-4xl
+              lg:text-5xl
             "
           >
             Advantages of Choosing NexaERP
@@ -66,11 +87,14 @@ const Advantages = () => {
 
           <p
             className="
-              mt-5
-              text-base
-              leading-7
+              mt-3
+              text-sm
+              leading-6
               text-slate-500
-              sm:text-lg
+              sm:mt-4
+              sm:text-base
+              sm:leading-7
+              lg:text-lg
             "
           >
             Innovative solutions that support your goals and contribute to the
@@ -79,84 +103,104 @@ const Advantages = () => {
         </div>
 
         {/* Advantages Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {advantages.map((advantage) => {
-            const Icon = advantage.icon;
-
-            return (
+        <div
+          className="
+            grid
+            grid-cols-1
+            gap-5
+            sm:grid-cols-2
+            lg:grid-cols-3
+            lg:gap-6
+          "
+        >
+          {advantages.map((advantage) => (
+            <div
+              key={advantage.title}
+              className="
+                group
+                flex
+                min-w-0
+                flex-col
+                items-center
+                rounded-2xl
+                border
+                border-slate-200
+                bg-white
+                px-6
+                py-8
+                text-center
+                shadow-sm
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-[#32214B]
+                hover:bg-[#32214B]
+                hover:shadow-xl
+                sm:px-7
+                sm:py-9
+              "
+            >
+              {/* Icon */}
               <div
-                key={advantage.title}
                 className="
-                  group
-                  rounded-2xl
-                  border
-                  border-slate-200
-                  bg-white
-                  p-7
-                  shadow-sm
-                  transition-all
+                  mb-5
+                  flex
+                  size-20
+                  shrink-0
+                  items-center
+                  justify-center
+                  bg-[#E9E6F2]
+                  transition-colors
                   duration-300
-                  hover:-translate-y-1
-                  hover:border-[#354FC4]/30
-                  hover:shadow-xl
+                  group-hover:bg-white
+                  [clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)]
                 "
               >
-                {/* Icon */}
-                <div
+                <img
+                  src={advantage.icon}
+                  alt={advantage.title}
                   className="
-                    mb-6
-                    flex
-                    size-14
-                    items-center
-                    justify-center
-                    rounded-2xl
-                    bg-linear-to-br
-                    from-[#354FC4]
-                    to-[#A83DFF]
-                    text-white
-                    shadow-md
-                    transition-all
-                    duration-300
-                    group-hover:scale-105
-                    group-hover:shadow-lg
+                    block
+                    h-14
+                    w-14
+                    object-contain
                   "
-                >
-                  <Icon
-                    size={30}
-                    strokeWidth={1.8}
-                    className="
-                      transition-transform
-                      duration-300
-                      group-hover:scale-110
-                    "
-                  />
-                </div>
-
-                {/* Title */}
-                <h3
-                  className="
-                    mb-3
-                    text-xl
-                    font-semibold
-                    text-primary
-                  "
-                >
-                  {advantage.title}
-                </h3>
-
-                {/* Description */}
-                <p
-                  className="
-                    text-sm
-                    leading-7
-                    text-slate-500
-                  "
-                >
-                  {advantage.description}
-                </p>
+                />
               </div>
-            );
-          })}
+
+              {/* Title */}
+              <h3
+                className="
+                  mb-3
+                  text-lg
+                  font-semibold
+                  text-primary
+                  transition-colors
+                  duration-300
+                  group-hover:text-white
+                  sm:text-xl
+                "
+              >
+                {advantage.title}
+              </h3>
+
+              {/* Description */}
+              <p
+                className="
+                  max-w-md
+                  text-sm
+                  leading-6
+                  text-slate-500
+                  transition-colors
+                  duration-300
+                  group-hover:text-white/80
+                  sm:leading-7
+                "
+              >
+                {advantage.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
