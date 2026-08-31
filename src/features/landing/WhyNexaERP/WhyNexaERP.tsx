@@ -13,7 +13,12 @@ const WhyNexaERP = () => {
     <section
       ref={sectionRef}
       id="why-nexaerp"
-      className="relative isolate min-h-162.5 overflow-hidden"
+      className="
+        relative
+        isolate
+        min-h-162.5
+        overflow-hidden
+      "
     >
       {/* Background Image */}
       <img
@@ -48,14 +53,21 @@ const WhyNexaERP = () => {
           max-w-7xl
           items-center
           justify-end
-          px-4
-          py-16
+          px-5
+          py-10
           sm:px-6
-          sm:py-20
+          sm:py-12
           lg:px-8
+          lg:py-14
         "
       >
-        <div className="w-full max-w-xl text-white">
+        <div
+          className="
+            w-full
+            max-w-xl
+            text-white
+          "
+        >
           {/* Heading */}
           <h2
             className="
@@ -64,7 +76,7 @@ const WhyNexaERP = () => {
               leading-tight
               sm:text-4xl
               md:text-5xl
-              lg:text-6xl
+              lg:text-5xl
             "
           >
             Everything Your Business Needs,
@@ -74,13 +86,14 @@ const WhyNexaERP = () => {
           {/* Description */}
           <p
             className="
-              mt-6
+              mt-4
               max-w-xl
-              text-base
-              leading-7
+              text-sm
+              leading-6
               text-white/80
-              sm:text-lg
-              sm:leading-8
+              sm:mt-5
+              sm:text-base
+              sm:leading-7
             "
           >
             NexaERP connects your core business operations through one
@@ -89,18 +102,35 @@ const WhyNexaERP = () => {
           </p>
 
           {/* Benefits */}
-          <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div
+            className="
+              mt-6
+              grid
+              grid-cols-1
+              gap-3
+              sm:mt-7
+              sm:grid-cols-2
+              sm:gap-4
+            "
+          >
             {[
               "Centralized Management",
               "Real-Time Business Data",
               "Integrated ERP Modules",
               "Built to Scale",
             ].map((item) => (
-              <div key={item} className="flex items-center gap-3">
+              <div
+                key={item}
+                className="
+                  flex
+                  items-center
+                  gap-3
+                "
+              >
                 <span
                   className="
                     flex
-                    size-10
+                    size-9
                     shrink-0
                     items-center
                     justify-center
@@ -110,7 +140,7 @@ const WhyNexaERP = () => {
                     backdrop-blur-sm
                   "
                 >
-                  <Check size={19} strokeWidth={2.5} />
+                  <Check size={18} strokeWidth={2.5} />
                 </span>
 
                 <span className="text-sm text-white/90">{item}</span>
@@ -119,7 +149,7 @@ const WhyNexaERP = () => {
           </div>
 
           {/* CTA */}
-          <div className="mt-10">
+          <div className="mt-7 sm:mt-8">
             <a
               href="/register"
               className="
@@ -132,8 +162,8 @@ const WhyNexaERP = () => {
                 from-[#A83DFF]
                 to-[#021E3A]
                 px-6
-                py-3.5
-                text-base
+                py-3
+                text-sm
                 font-semibold
                 text-white
                 shadow-[0_10px_35px_rgba(48,30,68,0.3)]
@@ -141,6 +171,8 @@ const WhyNexaERP = () => {
                 duration-300
                 hover:-translate-y-1
                 hover:shadow-[0_15px_40px_rgba(48,30,68,0.4)]
+                sm:py-3.5
+                sm:text-base
               "
             >
               Get Started

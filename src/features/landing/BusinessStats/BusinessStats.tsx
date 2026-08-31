@@ -96,12 +96,11 @@ const BusinessStats = () => {
           w-full
           max-w-7xl
           items-center
-          px-5
-          py-10
+          px-4
+          py-16
           sm:px-6
-          sm:py-12
+          sm:py-20
           lg:px-8
-          lg:py-14
         "
       >
         <div
@@ -123,8 +122,8 @@ const BusinessStats = () => {
               leading-[1.35]
               sm:text-2xl
               md:text-3xl
-              lg:text-[34px]
-              xl:text-[38px]
+              lg:text-[36px]
+              xl:text-[40px]
             "
           >
             <span className="block">
@@ -136,18 +135,16 @@ const BusinessStats = () => {
           {/* Stats */}
           <div
             className="
-              mt-7
+              mt-10
               grid
               grid-cols-2
-              gap-x-5
-              gap-y-6
-              sm:mt-9
-              sm:gap-x-7
-              sm:gap-y-7
+              gap-x-6
+              gap-y-8
+              sm:mt-12
+              sm:gap-x-8
               lg:grid-cols-4
-              lg:gap-x-5
-              lg:gap-y-0
-              xl:gap-x-7
+              lg:gap-x-6
+              xl:gap-x-8
             "
           >
             {stats.map((stat) => {
@@ -168,7 +165,7 @@ const BusinessStats = () => {
                   <div
                     className="
                       flex
-                      h-12
+                      h-14
                       items-center
                       justify-center
                       text-white
@@ -177,18 +174,18 @@ const BusinessStats = () => {
                       group-hover:-translate-y-1
                     "
                   >
-                    <Icon className="text-[38px] sm:text-[42px]" />
+                    <Icon className="text-[44px]" />
                   </div>
 
                   {/* Value */}
                   <div
                     className="
-                      mt-1.5
-                      text-xl
+                      mt-2
+                      text-2xl
                       font-bold
                       leading-tight
                       text-white
-                      sm:text-2xl
+                      sm:text-3xl
                     "
                   >
                     {stat.value}
@@ -198,12 +195,11 @@ const BusinessStats = () => {
                   <div
                     className="
                       mt-1
-                      max-w-40
+                      max-w-44
                       text-xs
-                      leading-5
+                      leading-6
                       text-white/90
                       sm:text-sm
-                      sm:leading-6
                     "
                   >
                     {stat.title}
