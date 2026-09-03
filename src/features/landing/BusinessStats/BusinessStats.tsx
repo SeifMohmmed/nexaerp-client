@@ -14,9 +14,9 @@ const stats = [
     value: "Full Support",
     title: (
       <>
-        for
+        Supported
         <br />
-        the Saudi Market
+        Market
       </>
     ),
     icon: FaHandHoldingHeart,

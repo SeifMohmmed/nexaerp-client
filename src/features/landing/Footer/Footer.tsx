@@ -7,12 +7,66 @@ import {
   FaWhatsapp,
   FaXTwitter,
 } from "react-icons/fa6";
-
 import { Mail } from "lucide-react";
 
 import logo from "../../../assets/Logo.png";
 
 const Footer = () => {
+  const importantLinks = [
+    { label: "Pricing", href: "#pricing" },
+    { label: "Programs", href: "#solutions" },
+    { label: "Contact", href: "#contact" },
+  ];
+
+  const policyLinks = [
+    { label: "About Us", href: "#about" },
+    { label: "Terms and Conditions", href: "#terms" },
+    { label: "Privacy Policy", href: "#privacy" },
+  ];
+
+  const socialLinks = [
+    {
+      label: "Email",
+      href: "mailto:info@nexaerp.com",
+      icon: <Mail size={17} strokeWidth={2} />,
+    },
+    {
+      label: "WhatsApp",
+      href: "#",
+      icon: <FaWhatsapp size={18} />,
+    },
+    {
+      label: "Instagram",
+      href: "#",
+      icon: <FaInstagram size={18} />,
+    },
+    {
+      label: "X",
+      href: "#",
+      icon: <FaXTwitter size={17} />,
+    },
+    {
+      label: "LinkedIn",
+      href: "#",
+      icon: <FaLinkedinIn size={18} />,
+    },
+    {
+      label: "Facebook",
+      href: "#",
+      icon: <FaFacebookF size={18} />,
+    },
+    {
+      label: "YouTube",
+      href: "#",
+      icon: <FaYoutube size={18} />,
+    },
+    {
+      label: "Snapchat",
+      href: "#",
+      icon: <FaSnapchat size={18} />,
+    },
+  ];
+
   return (
     <footer
       className="
@@ -20,11 +74,11 @@ const Footer = () => {
         mt-10
         w-full
         overflow-hidden
-        rounded-tr-[130px]
-        bg-[#021E3A]
+        rounded-tr-[120px]
+        bg-primary-hover
         text-white
-
-        max-md:rounded-tr-[80px]
+        sm:rounded-tr-[140px]
+        max-md:rounded-tr-[72px]
       "
     >
       {/* ==================== Footer Accent ==================== */}
@@ -35,13 +89,13 @@ const Footer = () => {
           left-0
           top-0
           h-0.75
-          w-45
+          w-44
           bg-linear-to-r
           from-[#354FC4]
-          via-[#A83DFF]
+          via-[#A744F3]
           to-transparent
-
-          max-md:w-30
+          sm:w-52
+          max-md:w-28
         "
       />
 
@@ -49,29 +103,31 @@ const Footer = () => {
 
       <div
         className="
+          mx-auto
           grid
           w-full
-          min-h-100
+          max-w-380
           grid-cols-[1.7fr_0.85fr_1.15fr_1.25fr]
-          gap-x-11
+          gap-x-10
           px-8
-          py-12.5
-
+          py-12
           lg:px-12
-
+          lg:gap-x-8
           xl:px-16
+          xl:gap-x-11
 
           max-lg:grid-cols-[1.5fr_0.9fr_1fr_1fr]
-          max-lg:gap-x-7
+          max-lg:gap-x-6
 
           max-md:grid-cols-2
-          max-md:gap-x-7
+          max-md:gap-x-8
           max-md:gap-y-10
-          max-md:px-5
-          max-md:py-12
+          max-md:px-6
+          max-md:py-11
 
           max-sm:grid-cols-1
           max-sm:gap-y-8
+          max-sm:px-5
           max-sm:py-10
         "
       >
@@ -80,35 +136,22 @@ const Footer = () => {
         <div
           className="
             min-w-0
-
             max-md:col-span-2
-
             max-sm:col-span-1
           "
         >
           {/* Logo */}
 
-          <a
-            href="/"
-            className="
-              inline-flex
-              items-center
-            "
-            aria-label="NexaERP"
-          >
+          <a href="/" className="inline-flex items-center" aria-label="NexaERP">
             <img
               src={logo}
               alt="NexaERP"
               className="
-                h-19.5
+                h-18.5
                 w-auto
                 object-contain
-
-                max-lg:h-18
-
-                max-md:h-17
-
-                max-sm:h-15
+                sm:h-19.5
+                lg:h-20
               "
             />
           </a>
@@ -117,14 +160,11 @@ const Footer = () => {
 
           <p
             className="
-              mt-4.5
+              mt-4
               text-sm
-              font-normal
-              leading-[1.8]
+              leading-7
               text-white
-
               max-lg:text-[13px]
-
               max-md:text-sm
             "
           >
@@ -137,14 +177,14 @@ const Footer = () => {
 
           <p
             className="
-              mt-4
+              mt-3
+              max-w-xl
               text-sm
-              leading-[1.9]
-              text-white/78
-
+              leading-7
+              text-white/70
               max-lg:text-[13px]
-
               max-md:text-sm
+              max-md:leading-7
             "
           >
             NexaERP is an integrated business management
@@ -160,10 +200,11 @@ const Footer = () => {
         <div className="pt-1">
           <h3
             className="
-              text-[17px]
+              text-base
               font-bold
-              leading-[1.45]
+              leading-6
               text-white
+              sm:text-[17px]
             "
           >
             Important
@@ -171,62 +212,27 @@ const Footer = () => {
             Links
           </h3>
 
-          <div
-            className="
-              mt-5.5
-              flex
-              flex-col
-              gap-3
-            "
-          >
-            <a
-              href="#pricing"
-              className="
-                w-fit
-                text-sm
-                leading-[1.4]
-                text-white/72
-                transition-all
-                duration-300
-                hover:translate-x-0.5
-                hover:text-[#A83DFF]
-              "
-            >
-              Pricing
-            </a>
-
-            <a
-              href="#solutions"
-              className="
-                w-fit
-                text-sm
-                leading-[1.4]
-                text-white/72
-                transition-all
-                duration-300
-                hover:translate-x-0.5
-                hover:text-[#A83DFF]
-              "
-            >
-              Programs
-            </a>
-
-            <a
-              href="#contact"
-              className="
-                w-fit
-                text-sm
-                leading-[1.4]
-                text-white/72
-                transition-all
-                duration-300
-                hover:translate-x-0.5
-                hover:text-[#A83DFF]
-              "
-            >
-              Contact
-            </a>
-          </div>
+          <nav className="mt-5 flex flex-col gap-3">
+            {importantLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="
+                  w-fit
+                  text-[13px]
+                  leading-6
+                  text-white/65
+                  transition-all
+                  duration-300
+                  hover:translate-x-1
+                  hover:text-accent
+                  sm:text-sm
+                "
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
         </div>
 
         {/* ==================== Site Policies ==================== */}
@@ -234,71 +240,37 @@ const Footer = () => {
         <div className="pt-1">
           <h3
             className="
-              text-[17px]
+              text-base
               font-bold
-              leading-[1.45]
+              leading-6
               text-white
+              sm:text-[17px]
             "
           >
             Site Policies
           </h3>
 
-          <div
-            className="
-              mt-5.5
-              flex
-              flex-col
-              gap-3
-            "
-          >
-            <a
-              href="#about"
-              className="
-                w-fit
-                text-sm
-                leading-[1.4]
-                text-white/72
-                transition-all
-                duration-300
-                hover:translate-x-0.5
-                hover:text-[#A83DFF]
-              "
-            >
-              About Us
-            </a>
-
-            <a
-              href="#terms"
-              className="
-                w-fit
-                text-sm
-                leading-[1.4]
-                text-white/72
-                transition-all
-                duration-300
-                hover:translate-x-0.5
-                hover:text-[#A83DFF]
-              "
-            >
-              Terms and Conditions
-            </a>
-
-            <a
-              href="#privacy"
-              className="
-                w-fit
-                text-sm
-                leading-[1.4]
-                text-white/72
-                transition-all
-                duration-300
-                hover:translate-x-0.5
-                hover:text-[#A83DFF]
-              "
-            >
-              Privacy Policy
-            </a>
-          </div>
+          <nav className="mt-5 flex flex-col gap-3">
+            {policyLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="
+                  w-fit
+                  text-[13px]
+                  leading-6
+                  text-white/65
+                  transition-all
+                  duration-300
+                  hover:translate-x-1
+                  hover:text-accent
+                  sm:text-sm
+                "
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
         </div>
 
         {/* ==================== Contact ==================== */}
@@ -306,10 +278,11 @@ const Footer = () => {
         <div className="pt-1">
           <h3
             className="
-              text-[17px]
+              text-base
               font-bold
-              leading-[1.45]
+              leading-6
               text-white
+              sm:text-[17px]
             "
           >
             Contact
@@ -319,240 +292,58 @@ const Footer = () => {
 
           <div
             className="
-              mt-5.5
+              mt-5
               grid
-              grid-cols-5
+              max-w-52.5
+              grid-cols-4
               gap-2.5
-
-              max-lg:grid-cols-4
-
-              max-md:grid-cols-4
             "
           >
-            {/* Email */}
-
-            <a
-              href="#"
-              aria-label="Email"
-              className="
-                flex
-                size-9.5
-                items-center
-                justify-center
-                rounded-md
-                border
-                border-[#A83DFF]/35
-                bg-[#7C4DFF]/15
-                text-white
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:border-[#7C4DFF]
-                hover:bg-[#7C4DFF]
-              "
-            >
-              <Mail size={17} strokeWidth={2} />
-            </a>
-
-            {/* WhatsApp */}
-
-            <a
-              href="#"
-              aria-label="WhatsApp"
-              className="
-                flex
-                size-9.5
-                items-center
-                justify-center
-                rounded-md
-                border
-                border-[#A83DFF]/35
-                bg-[#7C4DFF]/15
-                text-white
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:border-[#7C4DFF]
-                hover:bg-[#7C4DFF]
-              "
-            >
-              <FaWhatsapp size={18} />
-            </a>
-
-            {/* Instagram */}
-
-            <a
-              href="#"
-              aria-label="Instagram"
-              className="
-                flex
-                size-9.5
-                items-center
-                justify-center
-                rounded-md
-                border
-                border-[#A83DFF]/35
-                bg-[#7C4DFF]/15
-                text-white
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:border-[#7C4DFF]
-                hover:bg-[#7C4DFF]
-              "
-            >
-              <FaInstagram size={18} />
-            </a>
-
-            {/* X */}
-
-            <a
-              href="#"
-              aria-label="X"
-              className="
-                flex
-                size-9.5
-                items-center
-                justify-center
-                rounded-md
-                border
-                border-[#A83DFF]/35
-                bg-[#7C4DFF]/15
-                text-white
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:border-[#7C4DFF]
-                hover:bg-[#7C4DFF]
-              "
-            >
-              <FaXTwitter size={17} />
-            </a>
-
-            {/* LinkedIn */}
-
-            <a
-              href="#"
-              aria-label="LinkedIn"
-              className="
-                flex
-                size-9.5
-                items-center
-                justify-center
-                rounded-md
-                border
-                border-[#A83DFF]/35
-                bg-[#7C4DFF]/15
-                text-white
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:border-[#7C4DFF]
-                hover:bg-[#7C4DFF]
-              "
-            >
-              <FaLinkedinIn size={18} />
-            </a>
-
-            {/* Facebook */}
-
-            <a
-              href="#"
-              aria-label="Facebook"
-              className="
-                flex
-                size-9.5
-                items-center
-                justify-center
-                rounded-md
-                border
-                border-[#A83DFF]/35
-                bg-[#7C4DFF]/15
-                text-white
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:border-[#7C4DFF]
-                hover:bg-[#7C4DFF]
-              "
-            >
-              <FaFacebookF size={18} />
-            </a>
-
-            {/* YouTube */}
-
-            <a
-              href="#"
-              aria-label="YouTube"
-              className="
-                flex
-                size-9.5
-                items-center
-                justify-center
-                rounded-md
-                border
-                border-[#A83DFF]/35
-                bg-[#7C4DFF]/15
-                text-white
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:border-[#7C4DFF]
-                hover:bg-[#7C4DFF]
-              "
-            >
-              <FaYoutube size={18} />
-            </a>
-
-            {/* Snapchat */}
-
-            <a
-              href="#"
-              aria-label="Snapchat"
-              className="
-                flex
-                size-9.5
-                items-center
-                justify-center
-                rounded-md
-                border
-                border-[#A83DFF]/35
-                bg-[#7C4DFF]/15
-                text-white
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:border-[#7C4DFF]
-                hover:bg-[#7C4DFF]
-              "
-            >
-              <FaSnapchat size={18} />
-            </a>
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                aria-label={social.label}
+                className="
+                  flex
+                  size-9.5
+                  items-center
+                  justify-center
+                  rounded-lg
+                  border
+                  border-accent/25
+                  bg-white/6
+                  text-white
+                  transition-all
+                  duration-300
+                  hover:-translate-y-1
+                  hover:border-accent/70
+                  hover:bg-accent
+                  hover:shadow-[0_8px_20px_rgba(167,68,243,0.2)]
+                "
+              >
+                {social.icon}
+              </a>
+            ))}
           </div>
         </div>
       </div>
 
       {/* ==================== Bottom Bar ==================== */}
 
-      <div
-        className="
-          w-full
-          border-t
-          border-[rgba(82,153,196,0.7)]
-        "
-      >
+      <div className="border-t border-white/10">
         <div
           className="
+            mx-auto
             flex
             min-h-19.5
             w-full
+            max-w-380
             items-center
             justify-between
             gap-7
             px-8
-
             lg:px-12
-
             xl:px-16
 
             max-md:flex-col
@@ -588,7 +379,7 @@ const Footer = () => {
 
             <span
               className="
-                text-[25px]
+                text-[24px]
                 font-extrabold
                 tracking-[-1px]
                 text-white
@@ -607,6 +398,7 @@ const Footer = () => {
                 w-12
                 items-center
               "
+              aria-label="Mastercard"
             >
               <span
                 className="
@@ -635,9 +427,10 @@ const Footer = () => {
           <p
             className="
               m-0
-              text-xs
-              leading-normal
-              text-white/60
+              text-[11px]
+              leading-5
+              text-white/45
+              sm:text-xs
               max-md:text-center
             "
           >
