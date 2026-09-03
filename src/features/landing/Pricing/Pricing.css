@@ -1,25 +1,66 @@
+/* ================================================== */
 /* ==================== Pricing Base ==================== */
+/* ================================================== */
 
 .pricing-section {
   width: 100%;
-  padding: 40px 0 40px;
+  padding: 56px 0 64px;
   background: #ffffff;
   color: #102a3a;
   font-family: "Poppins", "Cairo", sans-serif;
-
-  /*
-    Important:
-    Use clip instead of hidden so sticky positioning
-    is not affected by overflow.
-  */
   overflow-x: clip;
 }
 
 .pricing-section * {
+  box-sizing: border-box;
   font-family: "Poppins", "Cairo", sans-serif;
 }
 
+/* ================================================== */
+/* ==================== Intro ==================== */
+/* ================================================== */
+
+.pricing-intro {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 32px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.pricing-eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #a53cff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pricing-intro h2 {
+  margin: 0;
+  color: #31214e;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.pricing-intro h2 span {
+  color: #7a55c7;
+}
+
+.pricing-intro p {
+  max-width: 600px;
+  margin: 12px auto 0;
+  color: #6b6473;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* ================================================== */
 /* ==================== Categories ==================== */
+/* ================================================== */
 
 .pricing-categories {
   display: flex;
@@ -27,71 +68,63 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-
-  margin-bottom: 48px;
+  margin-bottom: 40px;
   padding: 0 20px;
 }
 
 .pricing-category {
   min-width: 90px;
-  padding: 13px 28px;
-
+  padding: 11px 24px;
   border: 1px solid #a53cff;
   border-radius: 999px;
-
   background: #ffffff;
   color: #a53cff;
-
-  font-size: 14px;
-  font-weight: 500;
-
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
   cursor: pointer;
-
   transition:
     background-color 0.25s ease,
-    color 0.25s ease;
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .pricing-category:hover {
   background: #f5eaff;
+  transform: translateY(-1px);
 }
 
 .pricing-category.active {
   background: #a53cff;
   color: #ffffff;
+  box-shadow: 0 6px 18px rgba(165, 60, 255, 0.18);
 }
 
-/* ==================== Pricing Table ==================== */
+/* ================================================== */
+/* ==================== Desktop ==================== */
+/* ================================================== */
 
-.pricing-table-wrapper {
+.pricing-desktop {
   width: 100%;
 }
 
 .pricing-table {
   width: 100%;
-  min-width: 900px;
-
   background: #ffffff;
 }
 
-/* ==================== Sticky Pricing Header ==================== */
-
-/*
-  Navbar:
-  h-22 = 88px
-
-  Therefore Pricing Header starts
-  directly underneath the Navbar.
-*/
+/* ================================================== */
+/* ==================== Header ==================== */
+/* ================================================== */
 
 .pricing-header {
   position: sticky;
   top: 88px;
-
   z-index: 40;
 
   display: grid;
-  grid-template-columns: 21% repeat(3, 1fr);
+  grid-template-columns: 21% repeat(3, minmax(0, 1fr));
 
   min-height: 195px;
 
@@ -103,31 +136,33 @@
   box-shadow: 0 5px 15px rgba(16, 42, 58, 0.12);
 }
 
+/* ================================================== */
 /* ==================== Billing ==================== */
+/* ================================================== */
 
 .billing-cell {
   display: flex;
   align-items: center;
   justify-content: center;
-
+  min-width: 0;
   padding: 20px;
 }
 
 .billing-toggle {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: center;
+  gap: 14px;
 }
 
 .billing-option {
+  padding: 0;
   border: none;
   background: transparent;
-
-  color: #263b7c;
-
-  font-size: 15px;
+  color: #102a3a;
+  font-size: 14px;
   font-weight: 500;
-
+  white-space: nowrap;
   cursor: pointer;
 }
 
@@ -136,7 +171,55 @@
   font-weight: 700;
 }
 
+/* ================================================== */
+/* ==================== Billing Switch ==================== */
+/* ================================================== */
+
+.billing-switch {
+  position: relative;
+
+  width: 48px;
+  height: 24px;
+
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, #a53cff, #302ca0);
+
+  cursor: pointer;
+
+  transition: background 0.25s ease;
+}
+
+.billing-switch-knob {
+  position: absolute;
+
+  top: 3px;
+  left: 3px;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+
+  transition: transform 0.25s ease;
+}
+
+.billing-switch.yearly .billing-switch-knob {
+  transform: translateX(24px);
+}
+
+/* ================================================== */
 /* ==================== Plan Header ==================== */
+/* ================================================== */
 
 .plan-header {
   display: flex;
@@ -144,69 +227,73 @@
   align-items: center;
   justify-content: center;
 
-  padding: 20px 12px;
+  min-width: 0;
+
+  padding: 20px 16px;
 
   border-left: 1px solid #e5e1e8;
+
+  text-align: center;
 }
 
 .plan-header h3 {
   margin: 0;
-
   color: #102a3a;
-
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
 }
 
+/* ================================================== */
 /* ==================== Price ==================== */
+/* ================================================== */
 
 .plan-price {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
 
-  margin-top: 22px;
+  margin-top: 18px;
 
   color: #302ca0;
 }
 
 .plan-price span {
   color: #302ca0;
-
-  font-size: 32px;
+  font-size: clamp(25px, 2.4vw, 34px);
   font-weight: 800;
   line-height: 1;
 }
 
 .plan-price small {
   color: #9147c7;
-
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
 }
 
+/* ================================================== */
 /* ==================== Trial Button ==================== */
+/* ================================================== */
 
 .trial-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 7px;
 
-  width: calc(100% - 24px);
+  width: min(100%, 220px);
 
-  margin-top: 24px;
-  padding: 11px 15px;
+  margin-top: 22px;
+  padding: 11px 14px;
 
   border: none;
-  border-radius: 6px;
+  border-radius: 7px;
 
   background: linear-gradient(90deg, #a53cff, #071e40);
 
   color: #ffffff;
 
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
 
   cursor: pointer;
@@ -217,16 +304,17 @@
 }
 
 .trial-button:hover {
+  transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(48, 30, 68, 0.2);
 }
 
+/* ================================================== */
 /* ==================== Feature Group ==================== */
+/* ================================================== */
 
 .feature-group {
   width: 100%;
 }
-
-/* ==================== Feature Group Header ==================== */
 
 .feature-group-header {
   display: flex;
@@ -249,19 +337,22 @@
 .feature-group-title {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
 
   color: #102a3a;
 
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 .feature-group-title svg {
+  flex-shrink: 0;
   color: #a53cff;
 }
 
 .feature-group-header > svg {
+  flex-shrink: 0;
+
   transition: transform 0.25s ease;
 }
 
@@ -269,7 +360,9 @@
   transform: rotate(180deg);
 }
 
+/* ================================================== */
 /* ==================== Feature Rows ==================== */
+/* ================================================== */
 
 .feature-rows {
   width: 100%;
@@ -277,32 +370,35 @@
 
 .feature-row {
   display: grid;
-  grid-template-columns: 21% repeat(3, 1fr);
+  grid-template-columns:
+    21%
+    repeat(3, minmax(0, 1fr));
 
   min-height: 52px;
 
   border-bottom: 1px solid #edf0f3;
 }
 
-/* ==================== Feature Name ==================== */
-
 .feature-name {
   display: flex;
   align-items: center;
+
+  min-width: 0;
 
   padding: 10px 16px;
 
   color: #53658f;
 
   font-size: 13px;
+  line-height: 1.5;
 }
-
-/* ==================== Feature Value ==================== */
 
 .feature-value {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  min-width: 0;
 
   padding: 10px;
 
@@ -310,22 +406,128 @@
 
   color: #666666;
 
-  font-size: 13px;
-  text-align: center;
-}
+  font-size: 12px;
+  line-height: 1.5;
 
-/* ==================== Check ==================== */
+  text-align: center;
+
+  overflow-wrap: anywhere;
+}
 
 .feature-check {
   color: #20b52b;
 }
 
-/* ==================== Responsive ==================== */
+/* ================================================== */
+/* ==================== Mobile ==================== */
+/* ================================================== */
 
-@media (max-width: 900px) {
+.pricing-mobile {
+  display: none;
+}
+
+/* ================================================== */
+/* ==================== Tablet ==================== */
+/* ================================================== */
+
+@media (max-width: 1100px) {
   .pricing-section {
-    padding-top: 30px;
+    padding-top: 44px;
   }
+
+  .pricing-header {
+    top: 88px;
+  }
+
+  .billing-cell {
+    padding: 16px 10px;
+  }
+
+  .billing-toggle {
+    gap: 8px;
+  }
+
+  .billing-option {
+    font-size: 12px;
+  }
+
+  .plan-header {
+    padding: 18px 10px;
+  }
+
+  .plan-price span {
+    font-size: 27px;
+  }
+
+  .trial-button {
+    font-size: 11px;
+    padding: 10px 8px;
+  }
+
+  .feature-name {
+    padding-inline: 12px;
+    font-size: 12px;
+  }
+
+  .feature-value {
+    padding-inline: 7px;
+    font-size: 11px;
+  }
+}
+
+/* ================================================== */
+/* ==================== Mobile Pricing ==================== */
+/* ================================================== */
+
+@media (max-width: 768px) {
+  .pricing-section {
+    padding: 42px 0 52px;
+  }
+
+  /* Hide Desktop Table */
+
+  .pricing-desktop {
+    display: none;
+  }
+
+  /* Show Mobile Cards */
+
+  .pricing-mobile {
+    display: block;
+
+    width: 100%;
+
+    padding: 0 16px;
+  }
+
+  /* ================================================== */
+  /* ==================== Intro ==================== */
+  /* ================================================== */
+
+  .pricing-intro {
+    margin-bottom: 26px;
+    padding: 0 16px;
+  }
+
+  .pricing-eyebrow {
+    margin-bottom: 8px;
+    font-size: 11px;
+  }
+
+  .pricing-intro h2 {
+    font-size: 27px;
+    line-height: 1.25;
+  }
+
+  .pricing-intro p {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* ================================================== */
+  /* ==================== Categories ==================== */
+  /* ================================================== */
 
   .pricing-categories {
     justify-content: flex-start;
@@ -333,6 +535,8 @@
     flex-wrap: nowrap;
 
     overflow-x: auto;
+
+    margin-bottom: 22px;
 
     padding: 0 16px 8px;
 
@@ -344,129 +548,46 @@
   }
 
   .pricing-category {
-    flex-shrink: 0;
+    min-width: max-content;
 
-    padding: 11px 22px;
+    padding: 9px 18px;
 
-    font-size: 13px;
+    font-size: 12px;
   }
 
-  /*
-    Keep the Pricing Header underneath
-    the fixed Navbar.
-  */
+  /* ================================================== */
+  /* ==================== Mobile Billing ==================== */
+  /* ================================================== */
 
-  .pricing-header {
-    top: 88px;
-  }
-
-  .plan-price span {
-    font-size: 28px;
-  }
-}
-
-/* ==================== Billing Toggle ==================== */
-
-.billing-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.billing-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-/* ==================== Billing Options ==================== */
-
-.billing-option {
-  padding: 0;
-
-  border: none;
-  background: transparent;
-
-  color: #102a3a;
-
-  font-size: 15px;
-  font-weight: 500;
-
-  cursor: pointer;
-}
-
-.billing-option.active {
-  color: #1976f3;
-  font-weight: 700;
-}
-
-/* ==================== Toggle Switch ==================== */
-
-.billing-switch {
-  position: relative;
-
-  width: 50px;
-  height: 24px;
-
-  flex-shrink: 0;
-
-  padding: 0;
-
-  border: none;
-  border-radius: 999px;
-
-  background: linear-gradient(90deg, #a53cff, #302ca0);
-
-  cursor: pointer;
-
-  transition: background 0.25s ease;
-}
-
-/* ==================== Toggle Knob ==================== */
-
-.billing-switch-knob {
-  position: absolute;
-
-  top: 3px;
-  left: 3px;
-
-  width: 18px;
-  height: 18px;
-
-  border-radius: 50%;
-
-  background: #ffffff;
-
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-
-  transition: transform 0.25s ease;
-}
-
-/* ==================== Yearly State ==================== */
-
-.billing-switch.yearly .billing-switch-knob {
-  transform: translateX(26px);
-}
-
-/* ==================== Mobile ==================== */
-
-@media (max-width: 900px) {
-  .billing-toggle {
+  .mobile-billing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 12px;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+    padding: 14px;
+
+    border: 1px solid #e5e1e8;
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    box-shadow: 0 6px 20px rgba(49, 33, 78, 0.06);
   }
 
-  .billing-option {
+  .mobile-billing .billing-option {
     font-size: 13px;
   }
 
-  .billing-switch {
+  .mobile-billing .billing-switch {
     width: 46px;
     height: 23px;
   }
 
-  .billing-switch-knob {
+  .mobile-billing .billing-switch-knob {
     width: 17px;
     height: 17px;
 
@@ -474,7 +595,306 @@
     left: 3px;
   }
 
-  .billing-switch.yearly .billing-switch-knob {
+  .mobile-billing .billing-switch.yearly .billing-switch-knob {
     transform: translateX(23px);
+  }
+
+  /* ================================================== */
+  /* ==================== Mobile Plans ==================== */
+  /* ================================================== */
+
+  .mobile-plans {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .mobile-plan {
+    width: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid #e5e1e8;
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow: 0 8px 28px rgba(49, 33, 78, 0.07);
+  }
+
+  /* ================================================== */
+  /* ==================== Mobile Plan Header ==================== */
+  /* ================================================== */
+
+  .mobile-plan-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding: 22px 18px 18px;
+
+    background: linear-gradient(135deg, #ffffff 0%, #f8f5fc 100%);
+
+    border-bottom: 1px solid #eeeaf3;
+  }
+
+  .mobile-plan-label {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #a53cff;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .mobile-plan-header h3 {
+    margin: 0;
+
+    color: #31214e;
+
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  .mobile-plan-price {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+
+    flex-shrink: 0;
+
+    color: #302ca0;
+  }
+
+  .mobile-plan-price span {
+    font-size: 25px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .mobile-plan-price small {
+    color: #9147c7;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  /* ================================================== */
+  /* ==================== Mobile Trial ==================== */
+  /* ================================================== */
+
+  .mobile-trial-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    width: calc(100% - 36px);
+
+    margin: 16px 18px;
+
+    padding: 11px 14px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(90deg, #a53cff, #071e40);
+
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .mobile-trial-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow: 0 7px 18px rgba(48, 30, 68, 0.18);
+  }
+
+  /* ================================================== */
+  /* ==================== Mobile Features ==================== */
+  /* ================================================== */
+
+  .mobile-plan-features {
+    border-top: 1px solid #eeeaf3;
+  }
+
+  .mobile-feature-group {
+    width: 100%;
+
+    border-bottom: 1px solid #edf0f3;
+  }
+
+  .mobile-feature-group:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-feature-group-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding: 13px 16px;
+
+    border: none;
+
+    background: #f5f7f9;
+
+    color: #102a3a;
+
+    cursor: pointer;
+  }
+
+  .mobile-feature-group-header > span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: #102a3a;
+
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .mobile-feature-group-header > span svg {
+    flex-shrink: 0;
+    color: #a53cff;
+  }
+
+  .mobile-feature-group-header > svg {
+    flex-shrink: 0;
+
+    transition: transform 0.25s ease;
+  }
+
+  .mobile-feature-group-header > svg.rotate {
+    transform: rotate(180deg);
+  }
+
+  /* ================================================== */
+  /* ==================== Feature List ==================== */
+  /* ================================================== */
+
+  .mobile-feature-list {
+    width: 100%;
+    background: #ffffff;
+  }
+
+  .mobile-feature-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    min-height: 50px;
+
+    padding: 10px 16px;
+
+    border-top: 1px solid #f0f1f4;
+  }
+
+  .mobile-feature-name {
+    min-width: 0;
+
+    color: #53658f;
+
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .mobile-feature-value {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    min-width: 0;
+    max-width: 58%;
+
+    color: #666666;
+
+    font-size: 11px;
+    line-height: 1.5;
+
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  .mobile-feature-value .feature-check {
+    flex-shrink: 0;
+  }
+}
+
+/* ================================================== */
+/* ==================== Small Mobile ==================== */
+/* ================================================== */
+
+@media (max-width: 420px) {
+  .pricing-section {
+    padding-top: 36px;
+  }
+
+  .pricing-intro h2 {
+    font-size: 24px;
+  }
+
+  .pricing-intro p {
+    font-size: 12px;
+  }
+
+  .pricing-mobile {
+    padding-inline: 12px;
+  }
+
+  .mobile-plan-header {
+    padding: 19px 15px 16px;
+  }
+
+  .mobile-plan-header h3 {
+    font-size: 18px;
+  }
+
+  .mobile-plan-price span {
+    font-size: 22px;
+  }
+
+  .mobile-plan-price small {
+    font-size: 12px;
+  }
+
+  .mobile-trial-button {
+    width: calc(100% - 30px);
+    margin-inline: 15px;
+  }
+
+  .mobile-feature-group-header {
+    padding-inline: 14px;
+  }
+
+  .mobile-feature-item {
+    gap: 10px;
+    padding-inline: 14px;
+  }
+
+  .mobile-feature-name {
+    font-size: 11px;
+  }
+
+  .mobile-feature-value {
+    max-width: 55%;
+    font-size: 10px;
   }
 }
