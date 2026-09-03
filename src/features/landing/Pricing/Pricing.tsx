@@ -280,8 +280,27 @@ const Pricing = () => {
     return billingCycle === "monthly" ? plan.monthly : plan.yearly;
   };
 
+  /* ==================== Plan Key ==================== */
+
+  const getPlanKey = (planName: string) => {
+    return planName.toLowerCase() as "basic" | "professional" | "enterprise";
+  };
+
   return (
     <section className="pricing-section" id="pricing">
+      {/* ==================== Pricing Intro ==================== */}
+
+      <div className="pricing-intro">
+        <span className="pricing-eyebrow">Flexible Pricing</span>
+
+        <h2>
+          Choose the Right Plan
+          <span> for Your Business</span>
+        </h2>
+
+        <p>Flexible plans designed to support your business as it grows.</p>
+      </div>
+
       {/* ==================== Categories ==================== */}
 
       <div className="pricing-categories">
@@ -299,20 +318,19 @@ const Pricing = () => {
         ))}
       </div>
 
-      {/* ==================== Pricing Table ==================== */}
+      {/* ================================================== */}
+      {/* ==================== DESKTOP ==================== */}
+      {/* ================================================== */}
 
-      <div className="pricing-table-wrapper">
+      <div className="pricing-desktop">
         <div className="pricing-table">
           {/* ==================== Pricing Header ==================== */}
 
           <div className="pricing-header">
-            {/* ==================== Billing ==================== */}
-
-            {/* ==================== Billing ==================== */}
+            {/* Billing */}
 
             <div className="billing-cell">
               <div className="billing-toggle">
-                {/* Monthly */}
                 <button
                   type="button"
                   className={
@@ -325,7 +343,6 @@ const Pricing = () => {
                   Monthly
                 </button>
 
-                {/* Toggle Switch */}
                 <button
                   type="button"
                   className={`billing-switch ${
@@ -341,7 +358,6 @@ const Pricing = () => {
                   <span className="billing-switch-knob" />
                 </button>
 
-                {/* Yearly */}
                 <button
                   type="button"
                   className={
@@ -356,22 +372,16 @@ const Pricing = () => {
               </div>
             </div>
 
-            {/* ==================== Plans ==================== */}
+            {/* Plans */}
 
             {currentPlans.map((plan) => (
               <div className="plan-header" key={plan.name}>
-                {/* Plan Name */}
-
                 <h3>{plan.name}</h3>
-
-                {/* Price */}
 
                 <div className="plan-price">
                   <span>{getPrice(plan)}</span>
                   <small>﷼</small>
                 </div>
-
-                {/* Trial Button */}
 
                 <button type="button" className="trial-button">
                   <Rocket size={14} />
@@ -388,8 +398,6 @@ const Pricing = () => {
 
             return (
               <div className="feature-group" key={group.name}>
-                {/* ==================== Group Header ==================== */}
-
                 <button
                   type="button"
                   className="feature-group-header"
@@ -398,35 +406,26 @@ const Pricing = () => {
                 >
                   <span className="feature-group-title">
                     <BriefcaseBusiness size={15} />
+
                     {group.name}
                   </span>
 
                   <ChevronDown size={17} className={isOpen ? "rotate" : ""} />
                 </button>
 
-                {/* ==================== Group Features ==================== */}
-
                 {isOpen && (
                   <div className="feature-rows">
                     {group.features.map((feature) => (
                       <div className="feature-row" key={feature.name}>
-                        {/* Feature Name */}
-
                         <div className="feature-name">{feature.name}</div>
-
-                        {/* Basic */}
 
                         <div className="feature-value">
                           <FeatureValue value={feature.values.basic} />
                         </div>
 
-                        {/* Professional */}
-
                         <div className="feature-value">
                           <FeatureValue value={feature.values.professional} />
                         </div>
-
-                        {/* Enterprise */}
 
                         <div className="feature-value">
                           <FeatureValue value={feature.values.enterprise} />
@@ -436,6 +435,139 @@ const Pricing = () => {
                   </div>
                 )}
               </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ================================================== */}
+      {/* ==================== MOBILE ==================== */}
+      {/* ================================================== */}
+
+      <div className="pricing-mobile">
+        {/* ==================== Billing ==================== */}
+
+        <div className="mobile-billing">
+          <button
+            type="button"
+            className={
+              billingCycle === "monthly"
+                ? "billing-option active"
+                : "billing-option"
+            }
+            onClick={() => setBillingCycle("monthly")}
+          >
+            Monthly
+          </button>
+
+          <button
+            type="button"
+            className={`billing-switch ${
+              billingCycle === "yearly" ? "yearly" : ""
+            }`}
+            onClick={() =>
+              setBillingCycle(billingCycle === "monthly" ? "yearly" : "monthly")
+            }
+            aria-label="Toggle billing cycle"
+          >
+            <span className="billing-switch-knob" />
+          </button>
+
+          <button
+            type="button"
+            className={
+              billingCycle === "yearly"
+                ? "billing-option active"
+                : "billing-option"
+            }
+            onClick={() => setBillingCycle("yearly")}
+          >
+            Yearly
+          </button>
+        </div>
+
+        {/* ==================== Mobile Plans ==================== */}
+
+        <div className="mobile-plans">
+          {currentPlans.map((plan) => {
+            const planKey = getPlanKey(plan.name);
+
+            return (
+              <article className="mobile-plan" key={plan.name}>
+                {/* Plan Header */}
+
+                <div className="mobile-plan-header">
+                  <div>
+                    <span className="mobile-plan-label">NexaERP Plan</span>
+
+                    <h3>{plan.name}</h3>
+                  </div>
+
+                  <div className="mobile-plan-price">
+                    <span>{getPrice(plan)}</span>
+
+                    <small>﷼</small>
+                  </div>
+                </div>
+
+                {/* Trial */}
+
+                <button type="button" className="mobile-trial-button">
+                  <Rocket size={15} />
+                  Start Free Trial
+                </button>
+
+                {/* Features */}
+
+                <div className="mobile-plan-features">
+                  {featureGroups.map((group) => {
+                    const isOpen = openGroups[group.name];
+
+                    return (
+                      <div className="mobile-feature-group" key={group.name}>
+                        <button
+                          type="button"
+                          className="mobile-feature-group-header"
+                          onClick={() => toggleGroup(group.name)}
+                          aria-expanded={isOpen}
+                        >
+                          <span>
+                            <BriefcaseBusiness size={15} />
+
+                            {group.name}
+                          </span>
+
+                          <ChevronDown
+                            size={17}
+                            className={isOpen ? "rotate" : ""}
+                          />
+                        </button>
+
+                        {isOpen && (
+                          <div className="mobile-feature-list">
+                            {group.features.map((feature) => (
+                              <div
+                                className="mobile-feature-item"
+                                key={feature.name}
+                              >
+                                <span className="mobile-feature-name">
+                                  {feature.name}
+                                </span>
+
+                                <span className="mobile-feature-value">
+                                  <FeatureValue
+                                    value={feature.values[planKey]}
+                                  />
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </article>
             );
           })}
         </div>
