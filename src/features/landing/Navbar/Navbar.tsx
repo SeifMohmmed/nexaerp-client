@@ -1,19 +1,52 @@
 import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import logo from "../../../assets/Logo.png";
 
 const navLinks = [
-  { name: "Solutions", path: "#solutions" },
-  { name: "Benefits", path: "#benefits" },
-  { name: "How It Works", path: "#how-it-works" },
-  { name: "Integrations", path: "#integrations" },
-  { name: "FAQs", path: "#faqs" },
-  { name: "Pricing", path: "#pricing" },
+  {
+    name: "Home",
+    path: "/",
+    type: "route",
+  },
+  {
+    name: "Solutions",
+    path: "/#solutions",
+    type: "anchor",
+  },
+  {
+    name: "Benefits",
+    path: "/#advantages",
+    type: "anchor",
+  },
+  {
+    name: "How It Works",
+    path: "/#how-it-works",
+    type: "anchor",
+  },
+  {
+    name: "Integrations",
+    path: "/#integrations",
+    type: "anchor",
+  },
+  {
+    name: "About",
+    path: "/about",
+    type: "route",
+  },
+  {
+    name: "Pricing",
+    path: "/#pricing",
+    type: "anchor",
+  },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,14 +62,97 @@ export function Navbar() {
     };
   }, []);
 
+  /*
+   * ================================
+   * Scroll To Section
+   * ================================
+   */
+
+  const scrollToSection = (path: string) => {
+    const hash = path.split("#")[1];
+
+    if (!hash) {
+      navigate("/");
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      return;
+    }
+
+    /*
+     * If we are already on Home,
+     * just scroll to the section.
+     */
+    if (location.pathname === "/") {
+      const element = document.getElementById(hash);
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+
+      window.history.replaceState(null, "", `/#${hash}`);
+
+      return;
+    }
+
+    /*
+     * If we are on another page such as About,
+     * navigate to Home first.
+     */
+    navigate(`/#${hash}`);
+
+    /*
+     * Wait until LandingPage is rendered,
+     * then scroll to the requested section.
+     */
+    setTimeout(() => {
+      const element = document.getElementById(hash);
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 100);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  const handleNavigation = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    link: {
+      name: string;
+      path: string;
+      type: string;
+    },
+  ) => {
+    if (link.type === "anchor") {
+      event.preventDefault();
+
+      closeMenu();
+
+      scrollToSection(link.path);
+    } else {
+      closeMenu();
+    }
+  };
+
   return (
     <>
-      {/* Navbar */}
+      {/* ==================== Navbar ==================== */}
+
       <nav
         className={`
           fixed
-          top-0
           left-0
+          top-0
           z-999
           w-full
           text-white
@@ -61,11 +177,13 @@ export function Navbar() {
             xl:px-16
           "
         >
-          {/* Logo */}
-          <a
-            href="/"
+          {/* ==================== Logo ==================== */}
+
+          <Link
+            to="/"
+            onClick={closeMenu}
             className="flex shrink-0 items-center"
-            aria-label="NexaERP"
+            aria-label="NexaERP Home"
           >
             <img
               src={logo}
@@ -76,9 +194,10 @@ export function Navbar() {
                 object-contain
               "
             />
-          </a>
+          </Link>
 
-          {/* Desktop Navigation */}
+          {/* ==================== Desktop Navigation ==================== */}
+
           <div
             className="
               hidden
@@ -89,9 +208,10 @@ export function Navbar() {
             "
           >
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.path}
+                to={link.path}
+                onClick={(event) => handleNavigation(event, link)}
                 className="
                   group
                   flex
@@ -108,7 +228,6 @@ export function Navbar() {
               >
                 <span>{link.name}</span>
 
-                {/* Hover underline */}
                 <span
                   className="
                     h-px
@@ -119,11 +238,12 @@ export function Navbar() {
                     group-hover:w-full
                   "
                 />
-              </a>
+              </Link>
             ))}
           </div>
 
-          {/* Desktop Actions */}
+          {/* ==================== Desktop Actions ==================== */}
+
           <div
             className="
               hidden
@@ -133,8 +253,9 @@ export function Navbar() {
             "
           >
             {/* Login */}
-            <a
-              href="/login"
+
+            <Link
+              to="/login"
               className="
                 whitespace-nowrap
                 rounded-full
@@ -152,11 +273,12 @@ export function Navbar() {
               "
             >
               Login
-            </a>
+            </Link>
 
             {/* Get Started */}
-            <a
-              href="/register"
+
+            <Link
+              to="/register"
               className="
                 whitespace-nowrap
                 rounded-full
@@ -175,10 +297,11 @@ export function Navbar() {
               "
             >
               Get Started
-            </a>
+            </Link>
           </div>
 
-          {/* Mobile / Tablet Menu Button */}
+          {/* ==================== Mobile / Tablet Menu Button ==================== */}
+
           <button
             type="button"
             onClick={() => setIsMenuOpen(true)}
@@ -212,7 +335,8 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile / Tablet Menu */}
+      {/* ==================== Mobile / Tablet Menu ==================== */}
+
       <div
         id="mobile-navigation"
         className={`
@@ -233,10 +357,11 @@ export function Navbar() {
         `}
         aria-hidden={!isMenuOpen}
       >
-        {/* Close Button */}
+        {/* ==================== Close Button ==================== */}
+
         <button
           type="button"
-          onClick={() => setIsMenuOpen(false)}
+          onClick={closeMenu}
           className="
             absolute
             right-6
@@ -264,8 +389,14 @@ export function Navbar() {
           </svg>
         </button>
 
-        {/* Mobile / Tablet Logo */}
-        <a href="/" onClick={() => setIsMenuOpen(false)} className="mb-8">
+        {/* ==================== Mobile / Tablet Logo ==================== */}
+
+        <Link
+          to="/"
+          onClick={closeMenu}
+          className="mb-8"
+          aria-label="NexaERP Home"
+        >
           <img
             src={logo}
             alt="NexaERP"
@@ -275,15 +406,16 @@ export function Navbar() {
               object-contain
             "
           />
-        </a>
+        </Link>
 
-        {/* Mobile / Tablet Navigation */}
+        {/* ==================== Mobile / Tablet Navigation ==================== */}
+
         <div className="flex flex-col items-center gap-5">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.path}
-              onClick={() => setIsMenuOpen(false)}
+              to={link.path}
+              onClick={(event) => handleNavigation(event, link)}
               className="
                 text-lg
                 font-medium
@@ -294,11 +426,12 @@ export function Navbar() {
               "
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
 
-        {/* Mobile / Tablet Actions */}
+        {/* ==================== Mobile / Tablet Actions ==================== */}
+
         <div
           className="
             mt-6
@@ -308,9 +441,10 @@ export function Navbar() {
           "
         >
           {/* Login */}
-          <a
-            href="/login"
-            onClick={() => setIsMenuOpen(false)}
+
+          <Link
+            to="/login"
+            onClick={closeMenu}
             className="
               rounded-full
               border
@@ -327,12 +461,13 @@ export function Navbar() {
             "
           >
             Login
-          </a>
+          </Link>
 
           {/* Get Started */}
-          <a
-            href="/register"
-            onClick={() => setIsMenuOpen(false)}
+
+          <Link
+            to="/register"
+            onClick={closeMenu}
             className="
               rounded-full
               bg-white
@@ -347,7 +482,7 @@ export function Navbar() {
             "
           >
             Get Started
-          </a>
+          </Link>
         </div>
       </div>
     </>

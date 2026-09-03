@@ -12,7 +12,6 @@ import WhyNexaERP from "./WhyNexaERP/WhyNexaERP";
 export function LandingPage() {
   return (
     <>
-      <Navbar />
       <Hero />
       <PlatformFeatures />
       <Integrations />
@@ -21,7 +20,6 @@ export function LandingPage() {
       <HowItWorks />
       <Pricing />
       <BusinessStats />
-      <Footer />
     </>
   );
 }
