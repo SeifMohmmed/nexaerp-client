@@ -102,22 +102,23 @@ export function PlatformFeatures() {
         bg-white
         px-5
         pb-12
-        pt-4
+        pt-2
         sm:px-6
         sm:pb-14
-        sm:pt-6
+        sm:pt-3
         lg:px-12
         lg:pb-16
-        lg:pt-8
+        lg:pt-4
+        xl:px-16
       "
     >
-      <div className="mx-auto w-full max-w-[1620px]">
+      <div className="mx-auto w-full max-w-380">
         {/* Header */}
         <div
           className="
             mx-auto
             mb-8
-            max-w-2xl
+            max-w-3xl
             text-center
             sm:mb-10
           "
@@ -126,10 +127,10 @@ export function PlatformFeatures() {
             className="
               text-3xl
               font-bold
-              leading-tight
+              leading-[1.2]
               text-primary
               sm:text-4xl
-              lg:text-5xl
+              lg:text-[38px]
             "
           >
             Powerful Business Management
@@ -141,11 +142,11 @@ export function PlatformFeatures() {
             className="
               mt-3
               text-sm
-              leading-6
-              text-slate-500
+              leading-7
+              text-muted
               sm:mt-4
               sm:text-base
-              sm:leading-7
+              sm:leading-8
             "
           >
             Manage your business operations with powerful, integrated tools
@@ -157,9 +158,10 @@ export function PlatformFeatures() {
         <div
           className="
             grid
-            grid-cols-1
-            gap-4
+            grid-cols-2
+            gap-3
             sm:grid-cols-2
+            sm:gap-4
             lg:grid-cols-3
             xl:grid-cols-6
             xl:gap-5
@@ -172,39 +174,39 @@ export function PlatformFeatures() {
               <div
                 key={feature.name}
                 className="
-                  group
                   flex
-                  min-h-24
+                  min-h-20
                   min-w-0
                   flex-col
                   items-center
                   justify-center
-                  rounded-[22px]
+                  rounded-[18px]
                   border
-                  border-primary/15
+                  border-[#E8E3F2]
                   bg-white
-                  px-4
-                  py-4
+                  px-2
+                  py-2.5
                   text-center
                   transition-all
                   duration-300
                   hover:-translate-y-1
-                  hover:border-primary/30
-                  hover:shadow-[0_10px_30px_rgba(48,30,68,0.08)]
+                  hover:border-primary/20
+                  hover:shadow-[0_6px_20px_rgba(49,33,78,0.08)]
+                  sm:px-3
                 "
               >
                 {/* Icon */}
                 <div
                   className="
-                    mb-2.5
+                    mb-1.5
                     flex
-                    size-10
+                    h-8
                     items-center
                     justify-center
                   "
                 >
                   <Icon
-                    size={36}
+                    size={30}
                     strokeWidth={1.8}
                     className="text-[#354FC4]"
                   />
@@ -213,10 +215,14 @@ export function PlatformFeatures() {
                 {/* Name */}
                 <h3
                   className="
-                    text-sm
+                    text-[12px]
                     font-medium
-                    leading-5
-                    text-slate-800
+                    leading-[1.4]
+                    tracking-[0.02em]
+                    text-[#172033]
+                    sm:text-[15px]
+                    sm:leading-tight
+                    sm:tracking-normal
                   "
                 >
                   {feature.name}

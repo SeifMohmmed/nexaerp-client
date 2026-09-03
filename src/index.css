@@ -18,20 +18,160 @@ body {
 * {
   font-family: "Cairo", sans-serif;
 }
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+
+  background: #ffffff;
+  color: #17131c;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
 }
 
+/* ================================
+   NexaERP Design System
+================================ */
+
 @theme {
-  --color-primary: #301e44;
-  --color-primary-hover: #3d2757;
+  /* Primary */
+  --color-primary: #31214e;
+  --color-primary-hover: #021e3a;
   --color-primary-light: #ede7f2;
 
+  /* Backgrounds */
   --color-background: #ffffff;
-  --color-foreground: #17131c;
+  --color-surface: #ffffff;
+  --color-surface-light: #f6f8fa;
+  --color-surface-dark: #31214e;
 
+  /* Text */
+  --color-foreground: #17131c;
+  --color-text-dark: #31214e;
   --color-muted: #6b6473;
+
+  /* Accent */
+  --color-accent: #a744f3;
+  --color-secondary: #03abeb;
+
+  /* Borders */
   --color-border: #e5e1e8;
+  --color-border-light: #e6ebf2;
+
+  /* Spacing */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-9: 36px;
+  --spacing-15: 60px;
+
+  /* Radius */
+  --radius-button: 50px;
+  --radius-input: 8px;
+  --radius-chip: 5px;
+
+  /* Shadows */
+  --shadow-soft: -12px 0 30px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 6px 13px rgba(0, 0, 0, 0.25);
+}
+
+/* ================================
+   Typography
+================================ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Cairo", sans-serif;
+  margin: 0;
+}
+
+/* ================================
+   Global Components
+================================ */
+
+button {
+  font-family: "Cairo", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ================================
+   Brand Gradient
+================================ */
+
+.brand-gradient {
+  background: linear-gradient(135deg, #31214e 0%, #3d2a60 100%);
+}
+
+/* ================================
+   Card
+================================ */
+
+.soft-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: -12px 0 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ================================
+   Responsive Typography
+================================ */
+
+@media (max-width: 991px) {
+  h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 34px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 26px;
+  }
+
+  body {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 575px) {
+  h1 {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 24px;
+  }
 }

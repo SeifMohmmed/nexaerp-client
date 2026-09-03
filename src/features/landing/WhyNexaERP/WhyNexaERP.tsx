@@ -1,5 +1,4 @@
 import { useRef } from "react";
-
 import { Check } from "lucide-react";
 
 import image from "../../../assets/why-nexaerp.png";
@@ -9,6 +8,13 @@ import "./WhyNexaERP.css";
 const WhyNexaERP = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
+  const benefits = [
+    "Centralized Management",
+    "Real-Time Business Data",
+    "Integrated ERP Modules",
+    "Built to Scale",
+  ];
+
   return (
     <section
       ref={sectionRef}
@@ -16,8 +22,10 @@ const WhyNexaERP = () => {
       className="
         relative
         isolate
-        min-h-162.5
+        min-h-140
         overflow-hidden
+        sm:min-h-145
+        lg:min-h-150
       "
     >
       {/* Background Image */}
@@ -38,7 +46,7 @@ const WhyNexaERP = () => {
       {/* Image Revealer */}
       <div className="home-image-revealer" />
 
-      {/* Brand Gradient */}
+      {/* Overlay */}
       <div className="why-nexaerp-overlay absolute inset-0 -z-10" />
 
       {/* Content */}
@@ -48,17 +56,20 @@ const WhyNexaERP = () => {
           z-10
           mx-auto
           flex
-          min-h-162.5
+          min-h-140
           w-full
-          max-w-7xl
+          max-w-380
           items-center
           justify-end
           px-5
           py-10
+          sm:min-h-145
           sm:px-6
           sm:py-12
-          lg:px-8
+          lg:min-h-150
+          lg:px-12
           lg:py-14
+          xl:px-16
         "
       >
         <div
@@ -71,16 +82,17 @@ const WhyNexaERP = () => {
           {/* Heading */}
           <h2
             className="
-              text-3xl
+              text-2xl
               font-bold
               leading-tight
-              sm:text-4xl
-              md:text-5xl
-              lg:text-5xl
+              sm:text-3xl
+              sm:leading-[1.2]
+              md:text-4xl
+              lg:text-[42px]
             "
           >
             Everything Your Business Needs,
-            <span className="block text-[#A8B7FF]">In One Place</span>
+            <span className="mt-1 block text-[#A8B7FF]">In One Place</span>
           </h2>
 
           {/* Description */}
@@ -88,12 +100,13 @@ const WhyNexaERP = () => {
             className="
               mt-4
               max-w-xl
-              text-sm
+              text-[13px]
               leading-6
               text-white/80
               sm:mt-5
-              sm:text-base
+              sm:text-sm
               sm:leading-7
+              lg:text-base
             "
           >
             NexaERP connects your core business operations through one
@@ -104,33 +117,29 @@ const WhyNexaERP = () => {
           {/* Benefits */}
           <div
             className="
-              mt-6
+              mt-5
               grid
               grid-cols-1
-              gap-3
-              sm:mt-7
+              gap-2.5
+              sm:mt-6
               sm:grid-cols-2
-              sm:gap-4
+              sm:gap-3
             "
           >
-            {[
-              "Centralized Management",
-              "Real-Time Business Data",
-              "Integrated ERP Modules",
-              "Built to Scale",
-            ].map((item) => (
+            {benefits.map((item) => (
               <div
                 key={item}
                 className="
                   flex
+                  min-w-0
                   items-center
-                  gap-3
+                  gap-2.5
                 "
               >
                 <span
                   className="
                     flex
-                    size-9
+                    size-8
                     shrink-0
                     items-center
                     justify-center
@@ -140,20 +149,29 @@ const WhyNexaERP = () => {
                     backdrop-blur-sm
                   "
                 >
-                  <Check size={18} strokeWidth={2.5} />
+                  <Check size={16} strokeWidth={2.5} />
                 </span>
 
-                <span className="text-sm text-white/90">{item}</span>
+                <span
+                  className="
+                    text-[13px]
+                    leading-5
+                    text-white/90
+                    sm:text-sm
+                  "
+                >
+                  {item}
+                </span>
               </div>
             ))}
           </div>
 
           {/* CTA */}
-          <div className="mt-7 sm:mt-8">
+          <div className="mt-6 sm:mt-7">
             <a
               href="/register"
               className="
-                flex
+                inline-flex
                 w-full
                 items-center
                 justify-center
@@ -162,7 +180,7 @@ const WhyNexaERP = () => {
                 from-[#A83DFF]
                 to-[#021E3A]
                 px-6
-                py-3
+                py-2.5
                 text-sm
                 font-semibold
                 text-white
@@ -171,8 +189,9 @@ const WhyNexaERP = () => {
                 duration-300
                 hover:-translate-y-1
                 hover:shadow-[0_15px_40px_rgba(48,30,68,0.4)]
-                sm:py-3.5
+                sm:py-3
                 sm:text-base
+                lg:min-w-45
               "
             >
               Get Started

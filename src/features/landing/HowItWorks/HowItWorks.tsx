@@ -29,31 +29,38 @@ const HowItWorks = () => {
     <section
       id="how-it-works"
       className="
-        bg-[#F8FAFC]
+        bg-surface-light
         px-5
-        pt-8
         pb-12
+        pt-6
         sm:px-6
-        sm:pt-10
         sm:pb-14
+        sm:pt-8
         lg:px-12
-        lg:pt-12
         lg:pb-16
+        lg:pt-10
+        xl:px-16
       "
     >
-      <div className="mx-auto w-full max-w-7xl">
+      <div className="mx-auto w-full max-w-380">
         {/* Section Header */}
-        <div className="mx-auto max-w-2xl text-center">
+        <div
+          className="
+            mx-auto
+            max-w-3xl
+            text-center
+          "
+        >
           <span
             className="
               mb-2
               inline-block
-              text-xs
+              text-[11px]
               font-semibold
               uppercase
-              tracking-[0.2em]
+              tracking-[0.18em]
               text-[#354FC4]
-              sm:text-sm
+              sm:text-xs
             "
           >
             How It Works
@@ -63,10 +70,10 @@ const HowItWorks = () => {
             className="
               text-3xl
               font-bold
-              leading-tight
+              leading-[1.2]
               text-primary
               sm:text-4xl
-              lg:text-5xl
+              lg:text-[38px]
             "
           >
             Get Started With NexaERP
@@ -78,11 +85,11 @@ const HowItWorks = () => {
               mt-3
               max-w-xl
               text-sm
-              leading-6
-              text-slate-500
+              leading-7
+              text-muted
               sm:mt-4
               sm:text-base
-              sm:leading-7
+              sm:leading-8
             "
           >
             Start managing your business with a simple and streamlined setup
@@ -98,13 +105,10 @@ const HowItWorks = () => {
               absolute
               left-[16.66%]
               right-[16.66%]
-              top-9
+              top-8
               hidden
               h-px
-              bg-linear-to-r
-              from-[#354FC4]/20
-              via-[#A83DFF]/50
-              to-[#354FC4]/20
+              bg-[#D9D5E4]
               lg:block
             "
           />
@@ -113,8 +117,8 @@ const HowItWorks = () => {
             className="
               grid
               grid-cols-1
-              gap-7
-              sm:gap-8
+              gap-8
+              sm:gap-9
               lg:grid-cols-3
               lg:gap-8
             "
@@ -137,33 +141,35 @@ const HowItWorks = () => {
                       className="
                         mx-auto
                         flex
-                        size-18
+                        size-16
                         items-center
                         justify-center
                         rounded-full
                         border
-                        border-slate-100
+                        border-border
                         bg-white
-                        shadow-md
-                        transition-shadow
+                        shadow-[0_4px_16px_rgba(49,33,78,0.08)]
+                        transition-all
                         duration-300
-                        group-hover:shadow-lg
+                        group-hover:-translate-y-1
+                        group-hover:shadow-[0_8px_22px_rgba(49,33,78,0.12)]
                       "
                     >
                       <div
                         className="
                           flex
-                          size-11
+                          size-10
                           items-center
                           justify-center
                           rounded-full
-                          bg-linear-to-br
-                          from-[#354FC4]
-                          to-[#A83DFF]
+                          bg-primary
                           text-white
+                          transition-colors
+                          duration-300
+                          group-hover:bg-primary-hover
                         "
                       >
-                        <Icon size={21} strokeWidth={1.8} />
+                        <Icon size={20} strokeWidth={1.8} />
                       </div>
                     </div>
                   </div>
@@ -171,10 +177,11 @@ const HowItWorks = () => {
                   {/* Step Number */}
                   <span
                     className="
-                      text-[11px]
+                      text-[10px]
                       font-bold
-                      tracking-[0.2em]
+                      tracking-[0.18em]
                       text-[#354FC4]
+                      sm:text-[11px]
                     "
                   >
                     STEP {step.number}
@@ -183,11 +190,12 @@ const HowItWorks = () => {
                   {/* Title */}
                   <h3
                     className="
-                      mt-2
-                      text-lg
+                      mt-1.5
+                      text-base
                       font-semibold
+                      leading-6
                       text-primary
-                      sm:text-xl
+                      sm:text-lg
                     "
                   >
                     {step.title}
@@ -199,20 +207,29 @@ const HowItWorks = () => {
                       mx-auto
                       mt-2
                       max-w-sm
-                      text-sm
+                      text-[13px]
                       leading-6
-                      text-slate-500
+                      text-muted
+                      sm:text-sm
                       sm:leading-7
                     "
                   >
                     {step.description}
                   </p>
 
-                  {/* Arrow */}
+                  {/* Mobile Arrow */}
                   {index < steps.length - 1 && (
-                    <div className="mt-4 flex justify-center lg:hidden">
+                    <div
+                      className="
+                        mt-4
+                        flex
+                        justify-center
+                        lg:hidden
+                      "
+                    >
                       <ArrowRight
                         size={18}
+                        strokeWidth={1.8}
                         className="rotate-90 text-[#354FC4]/50"
                       />
                     </div>
@@ -235,7 +252,7 @@ const HowItWorks = () => {
               rounded-full
               bg-primary
               px-6
-              py-3
+              py-2.5
               text-sm
               font-semibold
               text-white
@@ -245,11 +262,14 @@ const HowItWorks = () => {
               hover:-translate-y-0.5
               hover:bg-primary-hover
               hover:shadow-lg
+              sm:px-7
+              sm:py-3
             "
           >
             Start Now
             <ArrowRight
               size={17}
+              strokeWidth={2}
               className="
                 transition-transform
                 duration-300

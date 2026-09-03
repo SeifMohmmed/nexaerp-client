@@ -1,16 +1,10 @@
-.why-nexaerp {
-  position: relative;
-}
-
 /* Initial dark layer + reveal animation */
 .home-image-revealer {
   position: absolute;
   inset: 0;
   z-index: -5;
-
   background: #000;
   opacity: 0.45;
-
   transition: opacity 0.3s ease-in;
 }
 
@@ -44,10 +38,6 @@
 
 /* Mobile */
 @media (max-width: 768px) {
-  .why-nexaerp {
-    min-height: 750px;
-  }
-
   .why-nexaerp-overlay {
     background: linear-gradient(
       180deg,

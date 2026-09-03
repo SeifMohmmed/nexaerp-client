@@ -3,29 +3,59 @@ import dashboard from "../../../assets/dashboard.png";
 const Hero = () => {
   return (
     <section
+      id="home"
       className="
+        relative
         overflow-hidden
         bg-primary
         px-5
         pb-12
-        pt-24
+        pt-36
         text-white
         sm:px-6
         sm:pb-16
-        sm:pt-28
+        sm:pt-32
         lg:px-12
         lg:pb-20
-        lg:pt-32
-        xl:px-20
-        2xl:px-24
+        lg:pt-36
+        xl:px-16
+        2xl:px-20
       "
     >
+      {/* Purple Glow */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-40
+          top-20
+          h-105
+          w-105
+          rounded-full
+          bg-accent/15
+          blur-[100px]
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -bottom-40
+          -left-40
+          h-105
+          w-105
+          rounded-full
+          bg-accent/10
+          blur-[100px]
+        "
+      />
       <div
         className="
           mx-auto
           flex
           w-full
-          max-w-7xl
+          max-w-380
           flex-col
           items-center
           gap-8
@@ -42,6 +72,7 @@ const Hero = () => {
             w-full
             max-w-2xl
             text-center
+            lg:w-[48%]
             lg:text-left
           "
         >
@@ -50,12 +81,11 @@ const Hero = () => {
             className="
               text-3xl
               font-bold
-              leading-[1.15]
+              leading-[1.2]
               sm:text-4xl
               md:text-5xl
               lg:text-5xl
               xl:text-6xl
-              mt-7
             "
           >
             Smart ERP System
@@ -72,11 +102,11 @@ const Hero = () => {
               mt-5
               max-w-xl
               text-sm
-              leading-6
+              leading-7
               text-white/75
               sm:mt-6
               sm:text-base
-              sm:leading-7
+              sm:leading-8
               lg:mx-0
             "
           >
@@ -114,9 +144,10 @@ const Hero = () => {
                 font-semibold
                 text-primary
                 shadow-lg
-                transition-colors
+                transition-all
                 duration-300
                 hover:bg-primary-light
+                hover:shadow-xl
                 sm:px-7
                 sm:py-3
               "
@@ -139,9 +170,10 @@ const Hero = () => {
                 text-sm
                 font-semibold
                 text-white
-                transition-colors
+                transition-all
                 duration-300
                 hover:bg-white/10
+                hover:border-white/70
                 sm:px-7
                 sm:py-3
               "
@@ -156,7 +188,7 @@ const Hero = () => {
           className="
             w-full
             max-w-lg
-            lg:w-[48%]
+            lg:w-[50%]
             lg:max-w-none
           "
         >

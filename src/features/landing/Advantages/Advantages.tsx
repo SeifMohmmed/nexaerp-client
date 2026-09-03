@@ -59,15 +59,16 @@ const Advantages = () => {
         lg:px-12
         lg:pb-16
         lg:pt-10
+        xl:px-16
       "
     >
-      <div className="mx-auto w-full max-w-7xl">
+      <div className="mx-auto w-full max-w-380">
         {/* Section Header */}
         <div
           className="
             mx-auto
             mb-8
-            max-w-2xl
+            max-w-3xl
             text-center
             sm:mb-10
           "
@@ -76,10 +77,10 @@ const Advantages = () => {
             className="
               text-3xl
               font-bold
-              leading-tight
+              leading-[1.2]
               text-primary
               sm:text-4xl
-              lg:text-5xl
+              lg:text-[38px]
             "
           >
             Advantages of Choosing NexaERP
@@ -87,14 +88,15 @@ const Advantages = () => {
 
           <p
             className="
+              mx-auto
               mt-3
+              max-w-2xl
               text-sm
-              leading-6
-              text-slate-500
+              leading-7
+              text-muted
               sm:mt-4
               sm:text-base
-              sm:leading-7
-              lg:text-lg
+              sm:leading-8
             "
           >
             Innovative solutions that support your goals and contribute to the
@@ -106,11 +108,12 @@ const Advantages = () => {
         <div
           className="
             grid
-            grid-cols-1
-            gap-5
+            grid-cols-2
+            gap-4
             sm:grid-cols-2
+            sm:gap-5
             lg:grid-cols-3
-            lg:gap-6
+            lg:gap-5
           "
         >
           {advantages.map((advantage) => (
@@ -122,35 +125,34 @@ const Advantages = () => {
                 min-w-0
                 flex-col
                 items-center
-                rounded-2xl
+                rounded-[18px]
                 border
-                border-slate-200
+                border-border-light
                 bg-white
-                px-6
-                py-8
+                px-5
+                py-7
                 text-center
-                shadow-sm
                 transition-all
                 duration-300
                 hover:-translate-y-1
-                hover:border-[#32214B]
-                hover:bg-[#32214B]
-                hover:shadow-xl
-                sm:px-7
-                sm:py-9
+                hover:border-primary
+                hover:bg-primary
+                hover:shadow-hover
+                sm:px-6
+                sm:py-8
               "
             >
               {/* Icon */}
               <div
                 className="
-                  mb-5
+                  mb-4
                   flex
-                  size-20
+                  size-18
                   shrink-0
                   items-center
                   justify-center
                   bg-[#E9E6F2]
-                  transition-colors
+                  transition-all
                   duration-300
                   group-hover:bg-white
                   [clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)]
@@ -161,8 +163,8 @@ const Advantages = () => {
                   alt={advantage.title}
                   className="
                     block
-                    h-14
-                    w-14
+                    h-12
+                    w-12
                     object-contain
                   "
                 />
@@ -171,14 +173,15 @@ const Advantages = () => {
               {/* Title */}
               <h3
                 className="
-                  mb-3
-                  text-lg
+                  mb-2.5
+                  text-base
                   font-semibold
+                  leading-6
                   text-primary
                   transition-colors
                   duration-300
                   group-hover:text-white
-                  sm:text-xl
+                  sm:text-lg
                 "
               >
                 {advantage.title}
@@ -187,13 +190,14 @@ const Advantages = () => {
               {/* Description */}
               <p
                 className="
-                  max-w-md
-                  text-sm
+                  max-w-sm
+                  text-[13px]
                   leading-6
-                  text-slate-500
+                  text-muted
                   transition-colors
                   duration-300
                   group-hover:text-white/80
+                  sm:text-sm
                   sm:leading-7
                 "
               >

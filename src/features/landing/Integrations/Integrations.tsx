@@ -62,32 +62,60 @@ const Integrations = () => {
         overflow-hidden
         bg-white
         px-5
-        py-12
+        pb-14
+        pt-10
         sm:px-6
-        sm:py-14
+        sm:pb-16
+        sm:pt-12
         lg:px-12
-        lg:py-16
+        lg:pb-20
+        lg:pt-14
+        xl:px-16
       "
     >
-      <div className="mx-auto w-full max-w-7xl">
+      <div className="mx-auto w-full max-w-380">
         {/* Section Header */}
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-3xl text-center">
           <h2
             className="
               text-3xl
               font-bold
-              leading-tight
-              text-[#343C4A]
+              leading-[1.2]
+              tracking-tight
+              text-text-dark
               sm:text-4xl
-              lg:text-5xl
+              lg:text-[38px]
             "
           >
             The program is compatible with
           </h2>
+
+          <p
+            className="
+              mx-auto
+              mt-3
+              max-w-xl
+              text-sm
+              leading-7
+              text-muted
+              sm:text-base
+              sm:leading-8
+            "
+          >
+            Connect NexaERP with the tools and platforms your business already
+            uses.
+          </p>
         </div>
 
         {/* Integration Slider */}
-        <div className="relative mt-8 overflow-hidden sm:mt-10">
+        <div
+          className="
+            relative
+            mt-8
+            overflow-hidden
+            sm:mt-10
+          "
+        >
           {/* Fade Left */}
           <div
             className="
@@ -97,7 +125,7 @@ const Integrations = () => {
               top-0
               z-10
               h-full
-              w-14
+              w-12
               bg-linear-to-r
               from-white
               to-transparent
@@ -114,7 +142,7 @@ const Integrations = () => {
               top-0
               z-10
               h-full
-              w-14
+              w-12
               bg-linear-to-l
               from-white
               to-transparent
@@ -139,23 +167,23 @@ const Integrations = () => {
                         flex-col
                         items-center
                         justify-center
-                        gap-4
-                        rounded-2xl
+                        gap-3
+                        rounded-[18px]
                         border
-                        border-primary/10
-                        bg-[#FAF9FC]
-                        px-5
-                        py-6
+                        border-border-light
+                        bg-surface-light
+                        px-4
+                        py-5
                         transition-all
                         duration-300
                         hover:-translate-y-1
-                        hover:border-[#354FC4]/30
+                        hover:border-primary/20
                         hover:bg-white
-                        hover:shadow-[0_15px_40px_rgba(48,30,68,0.12)]
+                        hover:shadow-hover
                         sm:w-36
-                        sm:gap-5
-                        sm:px-6
-                        sm:py-7
+                        sm:gap-4
+                        sm:px-5
+                        sm:py-6
                       "
                   >
                     {/* Icon Container */}
@@ -167,8 +195,13 @@ const Integrations = () => {
                           items-center
                           justify-center
                           rounded-xl
-                          bg-[#F5F3FA]
+                          border
+                          border-border-light
+                          bg-white
                           shadow-sm
+                          transition-transform
+                          duration-300
+                          group-hover:scale-105
                           sm:size-16
                         "
                     >
@@ -204,7 +237,14 @@ const Integrations = () => {
 
         {/* Bottom Message */}
         <div className="mt-5 flex justify-center sm:mt-6">
-          <p className="text-xs text-slate-400 sm:text-sm">
+          <p
+            className="
+              text-xs
+              font-medium
+              text-muted
+              sm:text-sm
+            "
+          >
             More integrations coming soon
           </p>
         </div>

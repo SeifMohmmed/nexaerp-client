@@ -14,8 +14,8 @@ export function LandingPage() {
     <>
       <Navbar />
       <Hero />
-      <Integrations />
       <PlatformFeatures />
+      <Integrations />
       <WhyNexaERP />
       <Advantages />
       <HowItWorks />
