@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Check, ChevronDown, BriefcaseBusiness, Rocket } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import "./Pricing.css";
 
@@ -250,6 +251,8 @@ const featureGroups: FeatureGroup[] = [
 /* ==================== Pricing Component ==================== */
 
 const Pricing = () => {
+  const navigate = useNavigate();
+
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly");
 
   const [activeCategory, setActiveCategory] = useState("Retail");
@@ -284,6 +287,18 @@ const Pricing = () => {
 
   const getPlanKey = (planName: string) => {
     return planName.toLowerCase() as "basic" | "professional" | "enterprise";
+  };
+
+  /* ==================== Start Free Trial ==================== */
+
+  const handleStartFreeTrial = (plan: Plan) => {
+    const params = new URLSearchParams({
+      industry: activeCategory,
+      type: billingCycle,
+      plan: plan.name,
+    });
+
+    navigate(`/register?${params.toString()}`);
   };
 
   return (
@@ -383,7 +398,11 @@ const Pricing = () => {
                   <small>﷼</small>
                 </div>
 
-                <button type="button" className="trial-button">
+                <button
+                  type="button"
+                  className="trial-button"
+                  onClick={() => handleStartFreeTrial(plan)}
+                >
                   <Rocket size={14} />
                   Start Free Trial
                 </button>
@@ -512,7 +531,11 @@ const Pricing = () => {
 
                 {/* Trial */}
 
-                <button type="button" className="mobile-trial-button">
+                <button
+                  type="button"
+                  className="mobile-trial-button"
+                  onClick={() => handleStartFreeTrial(plan)}
+                >
                   <Rocket size={15} />
                   Start Free Trial
                 </button>
