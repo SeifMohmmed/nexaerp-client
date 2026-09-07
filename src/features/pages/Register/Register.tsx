@@ -7,6 +7,7 @@ import logo from "../../../assets/sign_up_logo.png";
 import registerBackground from "../../../assets/register-background.jpg";
 import { useRegister } from "../../../Services/Auth/Auth";
 import { authStorage } from "../../../Services/Auth/AuthStorage";
+import { toast } from "sonner";
 
 type RegisterFormData = {
   firstName: string;
@@ -99,8 +100,12 @@ const Register = () => {
       const response = await registerMutation.mutateAsync(data);
 
       authStorage.setTokens(response.accessToken, response.refreshToken);
+
+      toast.success("Registration successful!");
     } catch (error) {
       console.error("Registration failed:", error);
+
+      toast.error("Registration failed. Please try again.");
     }
   };
 
