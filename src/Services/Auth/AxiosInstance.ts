@@ -1,5 +1,5 @@
 import axios from "axios";
-import { authStorage } from "./AuthStorage";
+import { useAuthStore } from "./AuthState";
 
 export const AxiosInstance = axios.create({
   baseURL: "https://localhost:5001/",
@@ -10,7 +10,7 @@ export const AxiosInstance = axios.create({
 
 AxiosInstance.interceptors.request.use(
   (config) => {
-    const accessToken = authStorage.getAccessToken();
+    const accessToken = useAuthStore.getState().accessToken;
 
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
