@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 
 import logo from "../../../assets/sign_up_logo.png";
 import registerBackground from "../../../assets/register-background.jpg";
+import { useRegister } from "../../../Services/Auth/Auth";
+import { authStorage } from "../../../Services/Auth/AuthStorage";
 
 type RegisterFormData = {
   firstName: string;
@@ -83,10 +85,23 @@ const Register = () => {
   /* =========================================================
       Submit
   ========================================================= */
+  const registerMutation = useRegister();
 
   const onSubmit = async (formData: RegisterFormData) => {
-    //TODO: Handle form submission logic here (e.g., send data to the server, display success message, etc.)
-    console.log("formData:", formData);
+    const data = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      password: formData.password,
+    };
+
+    try {
+      const response = await registerMutation.mutateAsync(data);
+
+      authStorage.setTokens(response.accessToken, response.refreshToken);
+    } catch (error) {
+      console.error("Registration failed:", error);
+    }
   };
 
   return (
