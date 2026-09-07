@@ -5,6 +5,7 @@ import Register from "../features/pages/Register/Register";
 
 import MainLayout from "../layouts/MainLayout/MainLayout";
 import AuthLayout from "../layouts/AuthLayout/AuthLayout";
+import Login from "../features/pages/Login/Login";
 export const router = createBrowserRouter([
   {
     element: <MainLayout />,
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },

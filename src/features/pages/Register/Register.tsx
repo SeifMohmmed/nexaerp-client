@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 
 import logo from "../../../assets/sign_up_logo.png";
 import registerBackground from "../../../assets/register-background.jpg";
+import { useRegister } from "../../../Services/Auth/Auth";
+import { toast } from "sonner";
+import { useAuthStore } from "../../../Services/Auth/AuthState";
 
 type RegisterFormData = {
   firstName: string;
@@ -25,6 +28,8 @@ const Register = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const setTokens = useAuthStore((state) => state.setTokens);
 
   /* =========================================================
       Query Parameters
@@ -84,10 +89,33 @@ const Register = () => {
       Submit
   ========================================================= */
 
+  const registerMutation = useRegister();
+
   const onSubmit = async (formData: RegisterFormData) => {
-    //TODO: Handle form submission logic here (e.g., send data to the server, display success message, etc.)
-    console.log("formData:", formData);
+    const data = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      password: formData.password,
+    };
+
+    try {
+      const response = await registerMutation.mutateAsync(data);
+
+      setTokens({
+        accessToken: response.accessToken,
+        refreshToken: response.refreshToken,
+      });
+
+      toast.success("Registration successful!");
+    } catch (error) {
+      console.error("Registration failed:", error);
+
+      toast.error("Registration failed. Please try again.");
+    }
   };
+
+  const isLoading = isSubmitting || registerMutation.isPending;
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#17256F] px-4 py-5 sm:px-6 lg:px-8">
@@ -694,10 +722,10 @@ const Register = () => {
               ================================================= */}
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isLoading}
                 className="mt-8 h-14 w-full rounded-[13px] bg-accent px-5 text-sm font-bold text-white shadow-[0_8px_20px_rgba(167,68,243,0.25)] transition-all duration-300 hover:bg-[#9635E2] hover:shadow-[0_10px_25px_rgba(167,68,243,0.35)] focus:outline-none focus:ring-4 focus:ring-[#A744F3]/20 disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {isSubmitting ? "Creating Account..." : "Create Account"}
+                {isLoading ? "Creating Account..." : "Create Account"}
               </button>
             </form>
           </section>
