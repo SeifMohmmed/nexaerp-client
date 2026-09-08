@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import logo from "../../../assets/Logo.png";
+import { useAuthStore } from "../../../Services/Auth/AuthState";
+import { AxiosInstance } from "../../../Services/Auth/AxiosInstance";
 
 const navLinks = [
   {
@@ -44,6 +46,7 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { accessToken, refreshToken, clearTokens } = useAuthStore();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -61,6 +64,20 @@ export function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await AxiosInstance.post("auth/logout", {
+        refreshToken,
+      });
+    } catch (error) {
+      console.error("Logout API failed:", error);
+    } finally {
+      clearTokens();
+      closeMenu();
+      navigate("/login");
+    }
+  };
 
   /*
    * ================================
@@ -246,58 +263,86 @@ export function Navbar() {
 
           <div
             className="
-              hidden
-              items-center
-              gap-4
-              lg:flex
-            "
+    hidden
+    items-center
+    gap-4
+    lg:flex
+  "
           >
-            {/* Login */}
+            {!accessToken ? (
+              <>
+                {/* Login */}
 
-            <Link
-              to="/login"
-              className="
-                whitespace-nowrap
-                rounded-full
-                border
-                border-white/70
-                px-5
-                py-2.5
-                text-sm
-                font-medium
-                text-white
-                transition-all
-                duration-300
-                hover:bg-white
-                hover:text-primary
-              "
-            >
-              Login
-            </Link>
+                <Link
+                  to="/login"
+                  className="
+          whitespace-nowrap
+          rounded-full
+          border
+          border-white/70
+          px-5
+          py-2.5
+          text-sm
+          font-medium
+          text-white
+          transition-all
+          duration-300
+          hover:bg-white
+          hover:text-primary
+        "
+                >
+                  Login
+                </Link>
 
-            {/* Get Started */}
+                {/* Register */}
 
-            <Link
-              to="/register"
-              className="
-                whitespace-nowrap
-                rounded-full
-                bg-white
-                px-6
-                py-2.5
-                text-sm
-                font-medium
-                text-primary
-                shadow-[0_0_25px_rgba(255,255,255,0.2)]
-                transition-all
-                duration-300
-                hover:bg-primary-light
-                hover:text-primary
-                hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]
-              "
-            >
-              Get Started
-            </Link>
+                <Link
+                  to="/register"
+                  className="
+          whitespace-nowrap
+          rounded-full
+          bg-white
+          px-6
+          py-2.5
+          text-sm
+          font-medium
+          text-primary
+          shadow-[0_0_25px_rgba(255,255,255,0.2)]
+          transition-all
+          duration-300
+          hover:bg-primary-light
+          hover:text-primary
+          hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]
+        "
+                >
+                  Register
+                </Link>
+              </>
+            ) : (
+              /* Logout */
+
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="
+        whitespace-nowrap
+        rounded-full
+        border
+        border-white/70
+        px-6
+        py-2.5
+        text-sm
+        font-medium
+        text-white
+        transition-all
+        duration-300
+        hover:bg-white
+        hover:text-primary
+      "
+              >
+                Logout
+              </button>
+            )}
           </div>
 
           {/* ==================== Mobile / Tablet Menu Button ==================== */}
@@ -434,18 +479,20 @@ export function Navbar() {
 
         <div
           className="
-            mt-6
-            flex
-            items-center
-            gap-4
-          "
+          mt-6
+          flex
+          items-center
+          gap-4
+        "
         >
-          {/* Login */}
+          {!accessToken ? (
+            <>
+              {/* Login */}
 
-          <Link
-            to="/login"
-            onClick={closeMenu}
-            className="
+              <Link
+                to="/login"
+                onClick={closeMenu}
+                className="
               rounded-full
               border
               border-white/70
@@ -459,30 +506,55 @@ export function Navbar() {
               hover:bg-white
               hover:text-primary
             "
-          >
-            Login
-          </Link>
+              >
+                Login
+              </Link>
 
-          {/* Get Started */}
+              {/* Register */}
 
-          <Link
-            to="/register"
-            onClick={closeMenu}
-            className="
+              <Link
+                to="/register"
+                onClick={closeMenu}
+                className="
+                rounded-full
+                bg-white
+                px-6
+                py-2.5
+                text-sm
+                font-medium
+                text-primary
+                transition-all
+                duration-300
+                hover:bg-primary-light
+              "
+              >
+                Register
+              </Link>
+            </>
+          ) : (
+            /* Logout */
+
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="
               rounded-full
-              bg-white
+              border
+              border-white/70
               px-6
               py-2.5
               text-sm
               font-medium
-              text-primary
+              text-white
               transition-all
               duration-300
-              hover:bg-primary-light
+              hover:bg-white
+              hover:text-primary
             "
-          >
-            Get Started
-          </Link>
+            >
+              Logout
+            </button>
+          )}
         </div>
       </div>
     </>
