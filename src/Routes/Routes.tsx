@@ -6,6 +6,9 @@ import Register from "../features/pages/Register/Register";
 import MainLayout from "../layouts/MainLayout/MainLayout";
 import AuthLayout from "../layouts/AuthLayout/AuthLayout";
 import Login from "../features/pages/Login/Login";
+import DashboardLayout from "../layouts/DashboardLayout/DashboardLayout";
+import Dashboard from "../features/pages/Dashboard/Dashboard";
+import Categories from "../features/pages/Category/Category";
 export const router = createBrowserRouter([
   {
     element: <MainLayout />,
@@ -31,6 +34,21 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+    ],
+  },
+  // Dashboard routes
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+      {
+        path: "categories",
+        element: <Categories />,
       },
     ],
   },
