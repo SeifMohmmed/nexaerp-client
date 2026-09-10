@@ -131,16 +131,16 @@ const Dashboard = () => {
       {/* Header */}
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-[#17131C] sm:text-3xl">
+          <h1 className="text-2xl font-bold tracking-tight text-foregroundd sm:text-3xl">
             Dashboard
           </h1>
 
-          <p className="mt-1 text-sm text-[#6B6473]">
+          <p className="mt-1 text-sm text-muted">
             Welcome back! Here's what's happening with your business today.
           </p>
         </div>
 
-        <div className="text-sm text-[#6B6473]">September 8, 2026</div>
+        <div className="text-sm text-muted">September 8, 2026</div>
       </div>
 
       {/* Statistics */}
@@ -152,25 +152,19 @@ const Dashboard = () => {
           return (
             <div
               key={stat.title}
-              className="rounded-2xl border border-[#E5E1E8] bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              className="rounded-2xl border border-border bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-sm font-medium text-[#6B6473]">
-                    {stat.title}
-                  </p>
+                  <p className="text-sm font-medium text-muted">{stat.title}</p>
 
-                  <p className="mt-2 text-2xl font-bold text-[#17131C]">
+                  <p className="mt-2 text-2xl font-bold text-foreground">
                     {stat.value}
                   </p>
                 </div>
 
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#EDE7F2]">
-                  <Icon
-                    size={21}
-                    strokeWidth={1.8}
-                    className="text-[#A744F3]"
-                  />
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-light">
+                  <Icon size={21} strokeWidth={1.8} className="text-accent" />
                 </div>
               </div>
 
@@ -199,13 +193,13 @@ const Dashboard = () => {
       {/* Charts */}
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
         {/* Sales Overview */}
-        <div className="rounded-2xl border border-[#E5E1E8] bg-white p-5 shadow-sm xl:col-span-2">
+        <div className="rounded-2xl border border-border bg-white p-5 shadow-sm xl:col-span-2">
           <div>
-            <h2 className="text-lg font-semibold text-[#17131C]">
+            <h2 className="text-lg font-semibold text-foreground">
               Sales Overview
             </h2>
 
-            <p className="mt-1 text-sm text-[#6B6473]">
+            <p className="mt-1 text-sm text-muted">
               Overview of your sales performance.
             </p>
           </div>
@@ -286,13 +280,13 @@ const Dashboard = () => {
         </div>
 
         {/* Order Summary */}
-        <div className="rounded-2xl border border-[#E5E1E8] bg-white p-5 shadow-sm">
+        <div className="rounded-2xl border border-border bg-white p-5 shadow-sm">
           <div>
-            <h2 className="text-lg font-semibold text-[#17131C]">
+            <h2 className="text-lg font-semibold text-foreground">
               Order Summary
             </h2>
 
-            <p className="mt-1 text-sm text-[#6B6473]">Current order status.</p>
+            <p className="mt-1 text-sm text-muted">Current order status.</p>
           </div>
 
           <div className="mt-6 space-y-5">
@@ -302,18 +296,16 @@ const Dashboard = () => {
               return (
                 <div key={status.label}>
                   <div className="mb-2 flex items-center justify-between">
-                    <span className="text-sm font-medium text-[#17131C]">
+                    <span className="text-sm font-medium text-foreground">
                       {status.label}
                     </span>
 
-                    <span className="text-sm text-[#6B6473]">
-                      {status.value}
-                    </span>
+                    <span className="text-sm text-muted">{status.value}</span>
                   </div>
 
                   <div className="h-2 overflow-hidden rounded-full bg-[#F0EDF2]">
                     <div
-                      className="h-full rounded-full bg-[#A744F3] transition-all duration-500"
+                      className="h-full rounded-full bg-accent transition-all duration-500"
                       style={{
                         width: `${percentage}%`,
                       }}
@@ -324,45 +316,45 @@ const Dashboard = () => {
             })}
           </div>
 
-          <div className="mt-7 border-t border-[#E5E1E8] pt-5">
+          <div className="mt-7 border-t border-border-5">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-[#6B6473]">Total Orders</span>
+              <span className="text-sm text-muted">Total Orders</span>
 
-              <span className="text-lg font-bold text-[#17131C]">342</span>
+              <span className="text-lg font-bold text-foreground">342</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Recent Orders */}
-      <div className="overflow-hidden rounded-2xl border border-[#E5E1E8] bg-white shadow-sm">
-        <div className="border-b border-[#E5E1E8] px-5 py-4">
-          <h2 className="text-lg font-semibold text-[#17131C]">
+      <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+        <div className="border-b border-border px-5 py-4">
+          <h2 className="text-lg font-semibold text-foreground">
             Recent Orders
           </h2>
 
-          <p className="mt-1 text-sm text-[#6B6473]">
+          <p className="mt-1 text-sm text-muted">
             Latest orders from your customers.
           </p>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[600px]">
+          <table className="w-full min-w-150">
             <thead>
-              <tr className="border-b border-[#E5E1E8] bg-[#FAF9FB]">
-                <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-[#6B6473]">
+              <tr className="border-b border-border bg-[#FAF9FB]">
+                <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-muted">
                   Order
                 </th>
 
-                <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-[#6B6473]">
+                <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-muted">
                   Customer
                 </th>
 
-                <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-[#6B6473]">
+                <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-muted">
                   Status
                 </th>
 
-                <th className="px-5 py-3 text-right text-xs font-semibold uppercase tracking-wider text-[#6B6473]">
+                <th className="px-5 py-3 text-right text-xs font-semibold uppercase tracking-wider text-muted">
                   Amount
                 </th>
               </tr>
@@ -372,13 +364,13 @@ const Dashboard = () => {
               {recentOrders.map((order) => (
                 <tr
                   key={order.id}
-                  className="border-b border-[#E5E1E8] last:border-0 hover:bg-[#FCFBFD]"
+                  className="border-b border-border last:border-0 hover:bg-[#FCFBFD]"
                 >
                   <td className="px-5 py-4 text-sm font-semibold text-[#31214E]">
                     {order.id}
                   </td>
 
-                  <td className="px-5 py-4 text-sm text-[#17131C]">
+                  <td className="px-5 py-4 text-sm text-foreground">
                     {order.customer}
                   </td>
 
@@ -398,7 +390,7 @@ const Dashboard = () => {
                     </span>
                   </td>
 
-                  <td className="px-5 py-4 text-right text-sm font-semibold text-[#17131C]">
+                  <td className="px-5 py-4 text-right text-sm font-semibold text-foreground">
                     {order.amount}
                   </td>
                 </tr>
