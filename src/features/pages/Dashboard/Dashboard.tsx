@@ -6,6 +6,15 @@ import {
   ShoppingCart,
   Users,
 } from "lucide-react";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 type StatCard = {
   title: string;
@@ -51,69 +60,125 @@ const stats: StatCard[] = [
   },
 ];
 
+const salesData = [
+  { month: "Jan", sales: 4200 },
+  { month: "Feb", sales: 5100 },
+  { month: "Mar", sales: 4800 },
+  { month: "Apr", sales: 6200 },
+  { month: "May", sales: 5800 },
+  { month: "Jun", sales: 7100 },
+  { month: "Jul", sales: 6800 },
+  { month: "Aug", sales: 8200 },
+  { month: "Sep", sales: 7600 },
+  { month: "Oct", sales: 8900 },
+  { month: "Nov", sales: 9400 },
+  { month: "Dec", sales: 10200 },
+];
+
+const orderStatus = [
+  {
+    label: "Pending",
+    value: 42,
+    total: 342,
+  },
+  {
+    label: "Confirmed",
+    value: 86,
+    total: 342,
+  },
+  {
+    label: "Shipped",
+    value: 64,
+    total: 342,
+  },
+  {
+    label: "Delivered",
+    value: 150,
+    total: 342,
+  },
+];
+
+const recentOrders = [
+  {
+    id: "#ORD-1024",
+    customer: "Ahmed Mohamed",
+    status: "Delivered",
+    amount: "$2,450",
+  },
+  {
+    id: "#ORD-1023",
+    customer: "Sara Ali",
+    status: "Confirmed",
+    amount: "$1,820",
+  },
+  {
+    id: "#ORD-1022",
+    customer: "Omar Hassan",
+    status: "Pending",
+    amount: "$950",
+  },
+  {
+    id: "#ORD-1021",
+    customer: "Mariam Ahmed",
+    status: "Shipped",
+    amount: "$1,240",
+  },
+];
+
 const Dashboard = () => {
   return (
     <div className="mx-auto max-w-7xl space-y-6">
       {/* Header */}
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          <h1 className="text-2xl font-bold tracking-tight text-[#17131C] sm:text-3xl">
             Dashboard
           </h1>
 
-          <p className="mt-1 text-sm text-muted">
+          <p className="mt-1 text-sm text-[#6B6473]">
             Welcome back! Here's what's happening with your business today.
           </p>
         </div>
 
-        <div className="text-sm text-muted">September 8, 2026</div>
+        <div className="text-sm text-[#6B6473]">September 8, 2026</div>
       </div>
 
       {/* Statistics */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {stats.map((stat) => {
           const Icon = stat.icon;
-
           const isPositive = stat.trend === "up";
 
           return (
             <div
               key={stat.title}
-              className="
-                rounded-2xl
-                border border-border
-                bg-white
-                p-5
-                shadow-sm
-                transition-all
-                duration-200
-                hover:-translate-y-0.5
-                hover:shadow-md
-              "
+              className="rounded-2xl border border-[#E5E1E8] bg-white p-5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
-              {/* Top */}
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted">{stat.title}</p>
+                  <p className="text-sm font-medium text-[#6B6473]">
+                    {stat.title}
+                  </p>
 
-                  <p className="mt-2 text-2xl font-bold text-foreground">
+                  <p className="mt-2 text-2xl font-bold text-[#17131C]">
                     {stat.value}
                   </p>
                 </div>
 
-                {/* Icon */}
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-light">
-                  <Icon size={21} strokeWidth={1.8} className="text-accent" />
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#EDE7F2]">
+                  <Icon
+                    size={21}
+                    strokeWidth={1.8}
+                    className="text-[#A744F3]"
+                  />
                 </div>
               </div>
 
-              {/* Bottom */}
               <div className="mt-4 flex items-center gap-1.5 text-xs">
                 <span
-                  className={`
-                    inline-flex items-center gap-0.5 font-semibold
-                    ${isPositive ? "text-emerald-600" : "text-red-500"}
-                  `}
+                  className={`inline-flex items-center gap-0.5 font-semibold ${
+                    isPositive ? "text-emerald-600" : "text-red-500"
+                  }`}
                 >
                   {isPositive ? (
                     <ArrowUpRight size={14} />
@@ -131,177 +196,213 @@ const Dashboard = () => {
         })}
       </div>
 
-      {/* Placeholder for Charts */}
+      {/* Charts */}
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-3">
         {/* Sales Overview */}
-        <div className="rounded-2xl border border-border bg-white p-5 shadow-sm xl:col-span-2">
+        <div className="rounded-2xl border border-[#E5E1E8] bg-white p-5 shadow-sm xl:col-span-2">
           <div>
-            <h2 className="text-lg font-semibold text-foregroundd">
+            <h2 className="text-lg font-semibold text-[#17131C]">
               Sales Overview
             </h2>
 
-            <p className="mt-1 text-sm text-muted">
+            <p className="mt-1 text-sm text-[#6B6473]">
               Overview of your sales performance.
             </p>
           </div>
 
-          <div className="mt-6 flex h-72 items-center justify-center rounded-xl bg-[#FAF9FB]">
-            <span className="text-sm text-[#8A8491]">
-              Sales chart will be added here
-            </span>
+          <div className="mt-6 h-72 w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart
+                data={salesData}
+                margin={{
+                  top: 10,
+                  right: 10,
+                  left: -20,
+                  bottom: 0,
+                }}
+              >
+                <defs>
+                  <linearGradient
+                    id="salesGradient"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1"
+                  >
+                    <stop offset="0%" stopColor="#A744F3" stopOpacity={0.25} />
+
+                    <stop offset="100%" stopColor="#A744F3" stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  vertical={false}
+                  stroke="#E5E1E8"
+                />
+
+                <XAxis
+                  dataKey="month"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{
+                    fill: "#8A8491",
+                    fontSize: 12,
+                  }}
+                />
+
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{
+                    fill: "#8A8491",
+                    fontSize: 12,
+                  }}
+                  tickFormatter={(value) => `$${value / 1000}k`}
+                />
+
+                <Tooltip
+                  contentStyle={{
+                    borderRadius: "12px",
+                    border: "1px solid #E5E1E8",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+                  }}
+                  formatter={(value) => [
+                    `$${Number(value).toLocaleString()}`,
+                    "Sales",
+                  ]}
+                />
+
+                <Area
+                  type="monotone"
+                  dataKey="sales"
+                  stroke="#A744F3"
+                  strokeWidth={2}
+                  fill="url(#salesGradient)"
+                />
+              </AreaChart>
+            </ResponsiveContainer>
           </div>
         </div>
 
         {/* Order Summary */}
-        <div className="rounded-2xl border border-border-white p-5 shadow-sm">
+        <div className="rounded-2xl border border-[#E5E1E8] bg-white p-5 shadow-sm">
           <div>
-            <h2 className="text-lg font-semibold text-foregroundd">
+            <h2 className="text-lg font-semibold text-[#17131C]">
               Order Summary
             </h2>
 
-            <p className="mt-1 text-sm text-muted">Current order status.</p>
+            <p className="mt-1 text-sm text-[#6B6473]">Current order status.</p>
           </div>
 
           <div className="mt-6 space-y-5">
-            <div>
-              <div className="mb-2 flex items-center justify-between text-sm">
-                <span className="text-muted">Pending</span>
+            {orderStatus.map((status) => {
+              const percentage = (status.value / status.total) * 100;
 
-                <span className="font-semibold text-foreground">42</span>
-              </div>
+              return (
+                <div key={status.label}>
+                  <div className="mb-2 flex items-center justify-between">
+                    <span className="text-sm font-medium text-[#17131C]">
+                      {status.label}
+                    </span>
 
-              <div className="h-2 overflow-hidden rounded-full bg-[#F0EDF3]">
-                <div className="h-full w-[35%] rounded-full bg-accent" />
-              </div>
-            </div>
+                    <span className="text-sm text-[#6B6473]">
+                      {status.value}
+                    </span>
+                  </div>
 
-            <div>
-              <div className="mb-2 flex items-center justify-between text-sm">
-                <span className="text-muted">Confirmed</span>
+                  <div className="h-2 overflow-hidden rounded-full bg-[#F0EDF2]">
+                    <div
+                      className="h-full rounded-full bg-[#A744F3] transition-all duration-500"
+                      style={{
+                        width: `${percentage}%`,
+                      }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
-                <span className="font-semibold text-foreground">86</span>
-              </div>
+          <div className="mt-7 border-t border-[#E5E1E8] pt-5">
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-[#6B6473]">Total Orders</span>
 
-              <div className="h-2 overflow-hidden rounded-full bg-[#F0EDF3]">
-                <div className="h-full w-[55%] rounded-full bg-[#31214E]" />
-              </div>
-            </div>
-
-            <div>
-              <div className="mb-2 flex items-center justify-between text-sm">
-                <span className="text-muted">Shipped</span>
-
-                <span className="font-semibold text-foreground">64</span>
-              </div>
-
-              <div className="h-2 overflow-hidden rounded-full bg-[#F0EDF3]">
-                <div className="h-full w-[42%] rounded-full bg-secondary" />
-              </div>
-            </div>
-
-            <div>
-              <div className="mb-2 flex items-center justify-between text-sm">
-                <span className="text-muted">Delivered</span>
-
-                <span className="font-semibold text-foreground">150</span>
-              </div>
-
-              <div className="h-2 overflow-hidden rounded-full bg-[#F0EDF3]">
-                <div className="h-full w-[78%] rounded-full bg-emerald-500" />
-              </div>
+              <span className="text-lg font-bold text-[#17131C]">342</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Recent Orders */}
-      <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
-        <div className="border-b border-border px-5 py-4">
-          <h2 className="text-lg font-semibold text-foreground">
+      <div className="overflow-hidden rounded-2xl border border-[#E5E1E8] bg-white shadow-sm">
+        <div className="border-b border-[#E5E1E8] px-5 py-4">
+          <h2 className="text-lg font-semibold text-[#17131C]">
             Recent Orders
           </h2>
 
-          <p className="mt-1 text-sm text-muted">
+          <p className="mt-1 text-sm text-[#6B6473]">
             Latest orders from your customers.
           </p>
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full min-w-160">
+          <table className="w-full min-w-[600px]">
             <thead>
-              <tr className="border-b border-border bg-[#FAF9FB]">
-                <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-muted">
+              <tr className="border-b border-[#E5E1E8] bg-[#FAF9FB]">
+                <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-[#6B6473]">
                   Order
                 </th>
 
-                <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-muted">
+                <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-[#6B6473]">
                   Customer
                 </th>
 
-                <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-muted">
+                <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-[#6B6473]">
                   Status
                 </th>
 
-                <th className="px-5 py-3 text-right text-xs font-semibold uppercase tracking-wide text-muted">
+                <th className="px-5 py-3 text-right text-xs font-semibold uppercase tracking-wider text-[#6B6473]">
                   Amount
                 </th>
               </tr>
             </thead>
 
-            <tbody className="divide-y divide-border">
-              <tr>
-                <td className="px-5 py-4 text-sm font-medium text-foreground">
-                  #ORD-1024
-                </td>
+            <tbody>
+              {recentOrders.map((order) => (
+                <tr
+                  key={order.id}
+                  className="border-b border-[#E5E1E8] last:border-0 hover:bg-[#FCFBFD]"
+                >
+                  <td className="px-5 py-4 text-sm font-semibold text-[#31214E]">
+                    {order.id}
+                  </td>
 
-                <td className="px-5 py-4 text-sm text-muted">Ahmed Mohamed</td>
+                  <td className="px-5 py-4 text-sm text-[#17131C]">
+                    {order.customer}
+                  </td>
 
-                <td className="px-5 py-4">
-                  <span className="rounded-full bg-[#E7F4EF] px-2.5 py-1 text-xs font-medium text-[#315B4A]">
-                    Delivered
-                  </span>
-                </td>
+                  <td className="px-5 py-4">
+                    <span
+                      className={`inline-flex rounded-full px-2.5 py-1 text-xs font-medium ${
+                        order.status === "Delivered"
+                          ? "bg-emerald-50 text-emerald-700"
+                          : order.status === "Confirmed"
+                            ? "bg-blue-50 text-blue-700"
+                            : order.status === "Shipped"
+                              ? "bg-purple-50 text-purple-700"
+                              : "bg-amber-50 text-amber-700"
+                      }`}
+                    >
+                      {order.status}
+                    </span>
+                  </td>
 
-                <td className="px-5 py-4 text-right text-sm font-semibold text-foreground">
-                  $2,450
-                </td>
-              </tr>
-
-              <tr>
-                <td className="px-5 py-4 text-sm font-medium text-foreground">
-                  #ORD-1023
-                </td>
-
-                <td className="px-5 py-4 text-sm text-muted">Sara Ali</td>
-
-                <td className="px-5 py-4">
-                  <span className="rounded-full bg-primary-light px-2.5 py-1 text-xs font-medium text-[#31214E]">
-                    Confirmed
-                  </span>
-                </td>
-
-                <td className="px-5 py-4 text-right text-sm font-semibold text-foreground">
-                  $1,820
-                </td>
-              </tr>
-
-              <tr>
-                <td className="px-5 py-4 text-sm font-medium text-foreground">
-                  #ORD-1022
-                </td>
-
-                <td className="px-5 py-4 text-sm text-muted">Omar Hassan</td>
-
-                <td className="px-5 py-4">
-                  <span className="rounded-full bg-[#FFF4E5] px-2.5 py-1 text-xs font-medium text-[#A15C00]">
-                    Pending
-                  </span>
-                </td>
-
-                <td className="px-5 py-4 text-right text-sm font-semibold text-foreground">
-                  $950
-                </td>
-              </tr>
+                  <td className="px-5 py-4 text-right text-sm font-semibold text-[#17131C]">
+                    {order.amount}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
