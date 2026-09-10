@@ -181,7 +181,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       >
         {/* Logo Header */}
         <div className="flex h-24 shrink-0 items-center justify-between px-6">
-          <NavLink to="/dashboard" onClick={onClose}>
+          <NavLink to="/" onClick={onClose}>
             <img src={logo} alt="NexaERP" className="w-32 object-contain" />
           </NavLink>
 

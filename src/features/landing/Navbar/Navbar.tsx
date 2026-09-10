@@ -5,7 +5,13 @@ import logo from "../../../assets/Logo.png";
 import { useAuthStore } from "../../../Services/Auth/AuthState";
 import { AxiosInstance } from "../../../Services/Auth/AxiosInstance";
 
-const navLinks = [
+type NavLink = {
+  name: string;
+  path: string;
+  type: "route" | "anchor";
+};
+
+const navLinks: NavLink[] = [
   {
     name: "Home",
     path: "/",
@@ -46,10 +52,17 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const { accessToken, refreshToken, clearTokens } = useAuthStore();
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  /*
+   * ================================
+   * Scroll Detection
+   * ================================
+   */
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,6 +77,12 @@ export function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  /*
+   * ================================
+   * Logout
+   * ================================
+   */
 
   const handleLogout = async () => {
     try {
@@ -81,6 +100,16 @@ export function Navbar() {
 
   /*
    * ================================
+   * Close Mobile Menu
+   * ================================
+   */
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  /*
+   * ================================
    * Scroll To Section
    * ================================
    */
@@ -90,10 +119,12 @@ export function Navbar() {
 
     if (!hash) {
       navigate("/");
+
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
+
       return;
     }
 
@@ -101,6 +132,7 @@ export function Navbar() {
      * If we are already on Home,
      * just scroll to the section.
      */
+
     if (location.pathname === "/") {
       const element = document.getElementById(hash);
 
@@ -120,12 +152,14 @@ export function Navbar() {
      * If we are on another page such as About,
      * navigate to Home first.
      */
+
     navigate(`/#${hash}`);
 
     /*
      * Wait until LandingPage is rendered,
      * then scroll to the requested section.
      */
+
     setTimeout(() => {
       const element = document.getElementById(hash);
 
@@ -138,17 +172,15 @@ export function Navbar() {
     }, 100);
   };
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  /*
+   * ================================
+   * Navigation Handler
+   * ================================
+   */
 
   const handleNavigation = (
     event: React.MouseEvent<HTMLAnchorElement>,
-    link: {
-      name: string;
-      path: string;
-      type: string;
-    },
+    link: NavLink,
   ) => {
     if (link.type === "anchor") {
       event.preventDefault();
@@ -160,6 +192,12 @@ export function Navbar() {
       closeMenu();
     }
   };
+
+  /*
+   * ================================
+   * Render
+   * ================================
+   */
 
   return (
     <>
@@ -257,17 +295,52 @@ export function Navbar() {
                 />
               </Link>
             ))}
+
+            {/* Dashboard */}
+
+            {accessToken && (
+              <Link
+                to="/dashboard"
+                onClick={closeMenu}
+                className="
+                  group
+                  flex
+                  flex-col
+                  gap-1
+                  whitespace-nowrap
+                  text-sm
+                  font-medium
+                  text-white
+                  transition-opacity
+                  duration-300
+                  hover:opacity-80
+                "
+              >
+                <span>Dashboard</span>
+
+                <span
+                  className="
+                    h-px
+                    w-0
+                    bg-white
+                    transition-all
+                    duration-300
+                    group-hover:w-full
+                  "
+                />
+              </Link>
+            )}
           </div>
 
           {/* ==================== Desktop Actions ==================== */}
 
           <div
             className="
-    hidden
-    items-center
-    gap-4
-    lg:flex
-  "
+              hidden
+              items-center
+              gap-4
+              lg:flex
+            "
           >
             {!accessToken ? (
               <>
@@ -276,20 +349,20 @@ export function Navbar() {
                 <Link
                   to="/login"
                   className="
-          whitespace-nowrap
-          rounded-full
-          border
-          border-white/70
-          px-5
-          py-2.5
-          text-sm
-          font-medium
-          text-white
-          transition-all
-          duration-300
-          hover:bg-white
-          hover:text-primary
-        "
+                    whitespace-nowrap
+                    rounded-full
+                    border
+                    border-white/70
+                    px-5
+                    py-2.5
+                    text-sm
+                    font-medium
+                    text-white
+                    transition-all
+                    duration-300
+                    hover:bg-white
+                    hover:text-primary
+                  "
                 >
                   Login
                 </Link>
@@ -299,21 +372,21 @@ export function Navbar() {
                 <Link
                   to="/register"
                   className="
-          whitespace-nowrap
-          rounded-full
-          bg-white
-          px-6
-          py-2.5
-          text-sm
-          font-medium
-          text-primary
-          shadow-[0_0_25px_rgba(255,255,255,0.2)]
-          transition-all
-          duration-300
-          hover:bg-primary-light
-          hover:text-primary
-          hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]
-        "
+                    whitespace-nowrap
+                    rounded-full
+                    bg-white
+                    px-6
+                    py-2.5
+                    text-sm
+                    font-medium
+                    text-primary
+                    shadow-[0_0_25px_rgba(255,255,255,0.2)]
+                    transition-all
+                    duration-300
+                    hover:bg-primary-light
+                    hover:text-primary
+                    hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]
+                  "
                 >
                   Register
                 </Link>
@@ -325,20 +398,20 @@ export function Navbar() {
                 type="button"
                 onClick={handleLogout}
                 className="
-        whitespace-nowrap
-        rounded-full
-        border
-        border-white/70
-        px-6
-        py-2.5
-        text-sm
-        font-medium
-        text-white
-        transition-all
-        duration-300
-        hover:bg-white
-        hover:text-primary
-      "
+                  whitespace-nowrap
+                  rounded-full
+                  border
+                  border-white/70
+                  px-6
+                  py-2.5
+                  text-sm
+                  font-medium
+                  text-white
+                  transition-all
+                  duration-300
+                  hover:bg-white
+                  hover:text-primary
+                "
               >
                 Logout
               </button>
@@ -473,17 +546,36 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
+
+          {/* Dashboard */}
+
+          {accessToken && (
+            <Link
+              to="/dashboard"
+              onClick={closeMenu}
+              className="
+                text-lg
+                font-medium
+                text-white
+                transition-colors
+                duration-300
+                hover:text-primary-light
+              "
+            >
+              Dashboard
+            </Link>
+          )}
         </div>
 
         {/* ==================== Mobile / Tablet Actions ==================== */}
 
         <div
           className="
-          mt-6
-          flex
-          items-center
-          gap-4
-        "
+            mt-6
+            flex
+            items-center
+            gap-4
+          "
         >
           {!accessToken ? (
             <>
@@ -493,19 +585,19 @@ export function Navbar() {
                 to="/login"
                 onClick={closeMenu}
                 className="
-              rounded-full
-              border
-              border-white/70
-              px-6
-              py-2.5
-              text-sm
-              font-medium
-              text-white
-              transition-all
-              duration-300
-              hover:bg-white
-              hover:text-primary
-            "
+                  rounded-full
+                  border
+                  border-white/70
+                  px-6
+                  py-2.5
+                  text-sm
+                  font-medium
+                  text-white
+                  transition-all
+                  duration-300
+                  hover:bg-white
+                  hover:text-primary
+                "
               >
                 Login
               </Link>
@@ -516,17 +608,17 @@ export function Navbar() {
                 to="/register"
                 onClick={closeMenu}
                 className="
-                rounded-full
-                bg-white
-                px-6
-                py-2.5
-                text-sm
-                font-medium
-                text-primary
-                transition-all
-                duration-300
-                hover:bg-primary-light
-              "
+                  rounded-full
+                  bg-white
+                  px-6
+                  py-2.5
+                  text-sm
+                  font-medium
+                  text-primary
+                  transition-all
+                  duration-300
+                  hover:bg-primary-light
+                "
               >
                 Register
               </Link>
@@ -538,19 +630,19 @@ export function Navbar() {
               type="button"
               onClick={handleLogout}
               className="
-              rounded-full
-              border
-              border-white/70
-              px-6
-              py-2.5
-              text-sm
-              font-medium
-              text-white
-              transition-all
-              duration-300
-              hover:bg-white
-              hover:text-primary
-            "
+                rounded-full
+                border
+                border-white/70
+                px-6
+                py-2.5
+                text-sm
+                font-medium
+                text-white
+                transition-all
+                duration-300
+                hover:bg-white
+                hover:text-primary
+              "
             >
               Logout
             </button>

@@ -1,6 +1,6 @@
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -16,6 +16,8 @@ type LoginFormData = {
 };
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const loginMutation = useLogin();
@@ -47,6 +49,8 @@ const Login = () => {
       });
 
       toast.success("Login successful!");
+
+      navigate("/dashboard");
     } catch (error) {
       console.error("Login failed:", error);
 

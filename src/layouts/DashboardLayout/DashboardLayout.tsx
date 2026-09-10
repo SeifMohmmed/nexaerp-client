@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
+import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 
 const DashboardLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -16,6 +17,9 @@ const DashboardLayout = () => {
 
   return (
     <div className="min-h-screen bg-[#F8F7FA]">
+      {/* Scroll to top */}
+      <ScrollToTop />
+
       {/* Sidebar */}
       <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
 
