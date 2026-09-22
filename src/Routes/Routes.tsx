@@ -11,6 +11,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import MainLayout from "../layouts/MainLayout/MainLayout";
 import PermissionGuard from "../Guards/PermissionGuard";
 import { Permissions } from "../constants/Permissions";
+import Customers from "../features/pages/Customer/Customer";
 
 export const router = createBrowserRouter([
   // =========================
@@ -68,6 +69,15 @@ export const router = createBrowserRouter([
         element: (
           <PermissionGuard permission={Permissions.CategoriesRead}>
             <Categories />
+          </PermissionGuard>
+        ),
+      },
+
+      {
+        path: "customers",
+        element: (
+          <PermissionGuard permission={Permissions.CustomersRead}>
+            <Customers />
           </PermissionGuard>
         ),
       },
