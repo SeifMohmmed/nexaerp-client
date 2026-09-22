@@ -9,6 +9,8 @@ import Dashboard from "../features/pages/Dashboard/Dashboard";
 import Categories from "../features/pages/Category/Category";
 import ProtectedRoute from "./ProtectedRoute";
 import MainLayout from "../layouts/MainLayout/MainLayout";
+import PermissionGuard from "../Guards/PermissionGuard";
+import { Permissions } from "../constants/Permissions";
 
 export const router = createBrowserRouter([
   // =========================
@@ -63,7 +65,11 @@ export const router = createBrowserRouter([
 
       {
         path: "categories",
-        element: <Categories />,
+        element: (
+          <PermissionGuard permission={Permissions.CategoriesRead}>
+            <Categories />
+          </PermissionGuard>
+        ),
       },
     ],
   },

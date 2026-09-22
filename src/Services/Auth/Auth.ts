@@ -48,3 +48,9 @@ export const useLogin = () => {
     },
   });
 };
+
+export const getPermissions = async (): Promise<string[]> => {
+  const response = await AxiosInstance.get<string[]>("auth/permissions");
+
+  return response.data;
+};

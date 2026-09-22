@@ -53,7 +53,7 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const { accessToken, refreshToken, clearTokens } = useAuthStore();
+  const { accessToken, refreshToken, logout } = useAuthStore();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -92,7 +92,7 @@ export function Navbar() {
     } catch (error) {
       console.error("Logout API failed:", error);
     } finally {
-      clearTokens();
+      logout();
       closeMenu();
       navigate("/login");
     }
