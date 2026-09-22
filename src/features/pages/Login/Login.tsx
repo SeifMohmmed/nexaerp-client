@@ -7,7 +7,8 @@ import { toast } from "sonner";
 import logo from "../../../assets/sign_up_logo.png";
 import registerBackground from "../../../assets/register-background.jpg";
 
-import { useLogin } from "../../../Services/Auth/Auth";
+import { useLogin, getPermissions } from "../../../Services/Auth/Auth";
+
 import { useAuthStore } from "../../../Services/Auth/AuthState";
 
 type LoginFormData = {
@@ -23,6 +24,7 @@ const Login = () => {
   const loginMutation = useLogin();
 
   const setTokens = useAuthStore((state) => state.setTokens);
+  const setPermissions = useAuthStore((state) => state.setPermissions);
 
   const {
     register,
@@ -38,16 +40,35 @@ const Login = () => {
 
   const onSubmit = async (formData: LoginFormData) => {
     try {
+      // ==========================================
+      // Login
+      // ==========================================
       const response = await loginMutation.mutateAsync({
         email: formData.email,
         password: formData.password,
       });
 
+      // ==========================================
+      // Store tokens
+      // ==========================================
       setTokens({
         accessToken: response.accessToken,
         refreshToken: response.refreshToken,
       });
 
+      // ==========================================
+      // Get user permissions
+      // ==========================================
+      const permissions = await getPermissions();
+
+      // ==========================================
+      // Store permissions
+      // ==========================================
+      setPermissions(permissions);
+      console.log("User permissions:", permissions);
+      // ==========================================
+      // Success
+      // ==========================================
       toast.success("Login successful!");
 
       navigate("/dashboard");
@@ -62,9 +83,7 @@ const Login = () => {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#17256F] px-4 py-5 sm:px-6 lg:px-8">
-      {/* =========================================================
-          Background
-      ========================================================= */}
+      {/* Background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <img
           src={registerBackground}
@@ -73,16 +92,11 @@ const Login = () => {
         />
       </div>
 
-      {/* =========================================================
-          Login Card
-      ========================================================= */}
+      {/* Login Card */}
       <div className="relative z-10 flex min-h-[calc(100vh-40px)] items-center justify-center">
         <div className="w-full max-w-125 overflow-hidden rounded-3xl bg-white shadow-[0_30px_80px_rgba(15,23,42,0.35)]">
-          {/* =====================================================
-              Header
-          ===================================================== */}
+          {/* Header */}
           <div className="bg-[#F7F9FC] px-6 py-8 text-center sm:px-10">
-            {/* Logo */}
             <Link to="/">
               <img
                 src={logo}
@@ -91,23 +105,17 @@ const Login = () => {
               />
             </Link>
 
-            {/* Heading */}
             <h1 className="text-3xl font-bold text-[#31214E]">Welcome Back</h1>
 
-            {/* Description */}
             <p className="mt-2 text-sm text-muted">
               Sign in to your NexaERP account
             </p>
           </div>
 
-          {/* =====================================================
-              Form
-          ===================================================== */}
+          {/* Form */}
           <div className="px-6 py-8 sm:px-10">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-              {/* =================================================
-                  Email
-              ================================================= */}
+              {/* Email */}
               <div>
                 <label
                   htmlFor="email"
@@ -147,9 +155,7 @@ const Login = () => {
                 )}
               </div>
 
-              {/* =================================================
-                  Password
-              ================================================= */}
+              {/* Password */}
               <div>
                 <label
                   htmlFor="password"
@@ -196,7 +202,6 @@ const Login = () => {
                     })}
                   />
 
-                  {/* Show / Hide Password */}
                   <button
                     type="button"
                     onClick={() => setShowPassword((prev) => !prev)}
@@ -216,9 +221,7 @@ const Login = () => {
                 )}
               </div>
 
-              {/* =================================================
-                  Remember / Forgot
-              ================================================= */}
+              {/* Remember / Forgot */}
               <div className="flex items-center justify-between gap-4">
                 <label className="flex cursor-pointer items-center gap-2 text-sm text-muted">
                   <input
@@ -237,9 +240,7 @@ const Login = () => {
                 </Link>
               </div>
 
-              {/* =================================================
-                  Login Button
-              ================================================= */}
+              {/* Login Button */}
               <button
                 type="submit"
                 disabled={isLoading}
@@ -249,9 +250,7 @@ const Login = () => {
               </button>
             </form>
 
-            {/* =====================================================
-                Register
-            ===================================================== */}
+            {/* Register */}
             <p className="mt-7 text-center text-sm text-muted">
               Don't have an account?{" "}
               <Link
