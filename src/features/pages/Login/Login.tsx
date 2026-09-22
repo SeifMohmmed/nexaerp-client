@@ -65,7 +65,7 @@ const Login = () => {
       // Store permissions
       // ==========================================
       setPermissions(permissions);
-      console.log("User permissions:", permissions);
+
       // ==========================================
       // Success
       // ==========================================

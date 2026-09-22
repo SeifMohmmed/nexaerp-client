@@ -121,7 +121,7 @@ AxiosInstance.interceptors.response.use(
          * Clear authentication state
          * and send user to login.
          */
-        useAuthStore.getState().clearTokens();
+        useAuthStore.getState().logout();
 
         window.location.href = "/login";
 
