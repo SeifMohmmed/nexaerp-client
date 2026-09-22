@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getRolesFromToken } from "./jwt";
+import { getRolesFromToken } from "./JWT";
 
 type AuthState = {
   accessToken: string | null;
