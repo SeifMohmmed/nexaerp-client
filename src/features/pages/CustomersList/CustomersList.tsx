@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useCustomers } from "../../../Services/Customers/Customers";
-import PermissionGuard from "../../../Guards/PermissionGuard";
-import { Permissions } from "../../../constants/Permissions";
+import { useCustomers } from "../../../../Services/Customers/Customers";
+import PermissionGuard from "../../../../Guards/PermissionGuard";
+import { Permissions } from "../../../../constants/Permissions";
 
 const Customers = () => {
   const [page, setPage] = useState(1);
