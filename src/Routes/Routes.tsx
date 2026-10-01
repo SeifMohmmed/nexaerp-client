@@ -13,6 +13,8 @@ import PermissionGuard from "../Guards/PermissionGuard";
 import { Permissions } from "../constants/Permissions";
 import Customers from "../features/pages/Customer/CustomersList/CustomersList";
 import CustomerProfile from "../features/pages/Customer/CustomerProfile/CustomerProfile";
+import AddCustomer from "../features/pages/Customer/AddCustomer/AddCustomer";
+import UpdateCustomer from "../features/pages/Customer/UpdateCustomer/UpdateCustomer";
 
 export const router = createBrowserRouter([
   // =========================
@@ -83,6 +85,23 @@ export const router = createBrowserRouter([
         ),
       },
 
+      {
+        path: "customers/add",
+        element: (
+          <PermissionGuard permission={Permissions.CustomersCreate}>
+            <AddCustomer />
+          </PermissionGuard>
+        ),
+      },
+
+      {
+        path: "customers/:id/edit",
+        element: (
+          <PermissionGuard permission={Permissions.CustomersUpdate}>
+            <UpdateCustomer />
+          </PermissionGuard>
+        ),
+      },
       {
         path: "customers/:id",
         element: (

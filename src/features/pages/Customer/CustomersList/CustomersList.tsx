@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useCustomers } from "../../../../Services/Customers/Customers";
 import PermissionGuard from "../../../../Guards/PermissionGuard";
 import { Permissions } from "../../../../constants/Permissions";
+import { Eye, Pencil, Plus } from "lucide-react";
+import DeleteCustomer from "../DeleteCustomer/DeleteCustomer";
 
 const Customers = () => {
   const [page, setPage] = useState(1);
@@ -80,12 +82,13 @@ const Customers = () => {
         </div>
 
         <PermissionGuard permission={Permissions.CustomersCreate}>
-          <button
-            type="button"
-            className="rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white shadow-sm transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          <Link
+            to="/dashboard/customers/add"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#31214E] px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[#3B2963] focus:outline-none focus:ring-2 focus:ring-[#31214E]/30"
           >
-            + Add Customer
-          </button>
+            <Plus className="h-4 w-4" />
+            <span>Add Customer</span>
+          </Link>
         </PermissionGuard>
       </div>
 
@@ -242,41 +245,34 @@ const Customers = () => {
                     ================================= */}
 
                     <td className="whitespace-nowrap px-6 py-4 text-right">
-                      <div className="flex justify-end gap-3">
+                      <div className="flex justify-end gap-2">
                         {/* View */}
-
                         <Link
                           to={`/dashboard/customers/${customer.id}`}
-                          className="font-medium text-gray-600 transition hover:text-gray-900 hover:underline"
+                          title="View customer"
+                          className="rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900"
                         >
-                          View
+                          <Eye className="h-4 w-4" />
                         </Link>
 
                         {/* Edit */}
-
                         <PermissionGuard
                           permission={Permissions.CustomersUpdate}
                         >
-                          <button
-                            type="button"
-                            className="font-medium text-blue-600 hover:underline"
+                          <Link
+                            to={`/dashboard/customers/${customer.id}/edit`}
+                            title="Edit customer"
+                            className="rounded-lg p-2 text-blue-600 transition-colors hover:bg-blue-50 hover:text-blue-700"
                           >
-                            Edit
-                          </button>
+                            <Pencil className="h-4 w-4" />
+                          </Link>
                         </PermissionGuard>
 
                         {/* Delete */}
-
-                        <PermissionGuard
-                          permission={Permissions.CustomersDelete}
-                        >
-                          <button
-                            type="button"
-                            className="font-medium text-red-600 hover:underline"
-                          >
-                            Delete
-                          </button>
-                        </PermissionGuard>
+                        <DeleteCustomer
+                          customerId={customer.id}
+                          customerName={customer.name}
+                        />
                       </div>
                     </td>
                   </tr>
