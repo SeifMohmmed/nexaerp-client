@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { AxiosInstance } from "../Auth/AxiosInstance";
 
 // ========================================
@@ -42,6 +42,33 @@ export type CustomerQueryParameters = {
 };
 
 // ========================================
+// Add Customer Request
+// ========================================
+
+export type AddCustomerRequest = {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  country: string;
+  taxId: string;
+};
+
+// ========================================
+// Update Customer Request
+// ========================================
+export type UpdateCustomerRequest = {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  country: string;
+  taxId: string;
+};
+
+// ========================================
 // Get Customers
 // ========================================
 
@@ -81,5 +108,40 @@ export const useCustomer = (id: string | undefined) => {
     },
 
     enabled: !!id,
+  });
+};
+
+// ========================================
+// Add Customer
+// ========================================
+export const useAddCustomer = () => {
+  return useMutation<Customer, Error, AddCustomerRequest>({
+    mutationFn: async (data) => {
+      const response = await AxiosInstance.post<Customer>("/customers", data);
+
+      return response.data;
+    },
+  });
+};
+
+// ========================================
+// Update Customer
+// ========================================
+export const useUpdateCustomer = () => {
+  return useMutation<void, Error, { id: string; data: UpdateCustomerRequest }>({
+    mutationFn: async ({ id, data }) => {
+      await AxiosInstance.put(`/customers/${id}`, data);
+    },
+  });
+};
+
+// ========================================
+// Delete Customer
+// ========================================
+export const useDeleteCustomer = () => {
+  return useMutation<void, Error, string>({
+    mutationFn: async (id) => {
+      await AxiosInstance.delete(`/customers/${id}`);
+    },
   });
 };

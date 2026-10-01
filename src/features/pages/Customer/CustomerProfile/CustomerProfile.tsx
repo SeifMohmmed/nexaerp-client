@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useCustomer } from "../../../../Services/Customers/Customers";
+import { ArrowLeftFromLine } from "lucide-react";
 
 const CustomerProfile = () => {
   const { id } = useParams<{ id: string }>();
@@ -56,9 +57,10 @@ const CustomerProfile = () => {
       <div className="mb-6">
         <Link
           to="/dashboard/customers"
-          className="text-sm font-medium text-gray-500 hover:text-gray-900"
+          className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 transition-colors hover:text-[#31214E]"
         >
-          ← Back to Customers
+          <ArrowLeftFromLine className="h-4 w-4" />
+          <span>Back to Customers</span>
         </Link>
 
         <div className="mt-4">
