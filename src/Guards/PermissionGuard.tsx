@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { useAuthStore } from "../Services/Auth/AuthState";
-import AccessDenied from "../features/pages/AccessDenied/AccessDenied";
+import { useAuthStore } from "../features/auth/services/AuthState";
+import AccessDenied from "../pages/AccessDenied/AccessDenied";
 
 type PermissionGuardProps = {
   permission: string;
